@@ -57,7 +57,7 @@
   <center>
     <img src="fom.jpg" alt="logo pt">
     <h1>Perjanjian Kerja Waktu Tertentu</h1>
-    <h5>No: 3/ HR-FJM / I / 2025</h5>
+    <h5>No: <span id="number"></span>/ HR-FJM / I / <span id="tahun"></span></h5>
   </center>  
   <hr>
 </header>
@@ -119,6 +119,10 @@
       <div>
         <label>Alamat</label>
         <input id="alamat" />
+      </div>
+		<div>
+        <label>Nomor Surat</label>
+        <input id="surat" type="number" />
       </div>
       <div>
         <label>Tempat/Tanggal Lahir</label>
@@ -368,6 +372,7 @@
       mulai: document.getElementById('mulai').value,
       akhir: document.getElementById('akhir').value,
       nik: document.getElementById('nik').value.trim(),
+	  surat: document.getElementById('surat').value.trim(),
       telp: document.getElementById('telp').value.trim(),
       alamat: document.getElementById('alamat').value.trim(),
       ttl: document.getElementById('ttl').value,
@@ -483,5 +488,6 @@
 </script>
 </body>
 </html>
+
 
 
