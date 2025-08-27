@@ -178,9 +178,10 @@
         <h5><p style="text-align:center">No: <span class="no-kontrak"></span></p></h5>
 
         <hr>
+        <center><img src="fom.jpg" alt="logo pt"></center>
         <h2>PT. FEDERASI JAYA MANDIRI</h2>
         <h3>PERJANJIAN KERJA WAKTU TERTENTU</h3>
-        <p>Pada hari ini, <u><span id="tanggalwaktu"></span></u> dibuat perjanjian kerja antara:</p>
+        <p>Pada hari ini, <span id="hari"></span> <span id="tanggal"></span> <span id="bulan"></span> <span id="tahun"></span> dibuat perjanjian kerja antara:</p>
                   <div>
                      <h4><u><b>PIHAK PERTAMA</b></u></h4>
                              <table>
@@ -208,6 +209,7 @@
                                     <p><b>Jabatan:</b> <span id="r-jabatan"></span></p>
                                     <p><b>Masa Kontrak:</b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
                                     <div id="detail-karyawan"></div>
+								    </div>
 									<div class="page" style="text-align:justify">
 									<p>Didalam hal ini bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut <b>PIHAK KEDUA.</b></p>
 									<p>Berdasarkan kesepakatan dan persetujuan bersama, para pihak dengan ini <b>setuju dan sepakat</b> untuk menandatangani dan mengikatkan diri dalam Perjanjian Kerja Waktu Tertentu dengan syarat-syarat dan ketentuan-ketentuan sebagai berikut :</p>
@@ -271,7 +273,8 @@
                                     <h3>Pasal 9 </h3>
                                     <p>Perjanjian Kerja ini tidak memberikan hak apapun kepada Karyawan untuk menjadi pekerja tetap kecuali atas penilaian atau persetujuan dari Perusahaan. Karyawan dengan ini menyatakan persetujuannya bahwa tidak ada hak-hak lain milik Karyawan selain dari yang tersebut dalam Perjanjian Kerja ini. Demikian Perjanjian Kerja  ini dibuat dalam rangkap 2 (dua) asli, masing – masing untuk Perusahaan dan Karyawan serta masing – masing mempunyai kekuatan hukum yang sama .</p>
                                     <p>Demikian Perjanjian Kerja  ini dibuat dalam rangkap 2 (dua) asli, masing – masing untuk Perusahaan dan Karyawan serta masing – masing mempunyai kekuatan hukum yang sama .</p>
-                                    <table class="sign-table">
+									</div>
+									<table class="sign-table">
                                     <tr>
                                     <td class="sign-td">
                                     <div class="sign-title">Pihak Pertama</div>
@@ -285,13 +288,11 @@
                                     </td>
                                     </tr>
                                     </table>
+	                                </div>
+	                                </div>
                                     <div class="actions"><button class="muted" type="button" onclick="downloadPDF()">Unduh PDF</button></div>
-									</div>
-								   </div>
-	                               </div>
-	                               </div>
 	     						   </section>
-</div>
+                                   </div>
 <script>
   // —— Utilities ——
   const $ = (sel)=>document.querySelector(sel);
@@ -496,5 +497,6 @@ function generateNomorKontrak(){
 </script>
 </body>
 </html>
+
 
 
