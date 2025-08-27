@@ -50,20 +50,18 @@
     .copybox input{flex:1}
 
     @media (max-width:680px){.row{grid-template-columns:1fr}}
-    </style>
+  </style>
 </head>
-<body id="top">
+<body>
 <header>
   <center>
-	  <br>
-	 <p><img src="fom.jpg" alt="fjm pt" width="150" height="50"></p>
-	  <br>
-    <p><h1>Perjanjian Kerja Waktu Tertentu</h1></p>
+    <img src="fom.jpg" alt="logo pt">
+    <h1>Perjanjian Kerja Waktu Tertentu</h1>
     <h5>No: 3/ HR-FJM / I / 2025</h5>
   </center>  
   <hr>
 </header>
-<div class="page" style="text-align:justify">
+
 <div class="container">
   <div class="tabs">
     <div class="tab active" id="tab-hrd" onclick="switchMode('hrd')">Pihak Pertama</div>
@@ -82,6 +80,26 @@
         <label>Jabatan</label>
         <input id="jabatan" placeholder="Jabatan" />
       </div>
+	   <div>
+		<label>Bagian
+		<select id = "bagian">
+		<option value = "">---Bagian---</option>
+		<option>IT</option>
+          <option>GENERAL AFFAIR</option>
+          <option>PRODUKSI</option>
+          <option>MARKETING</option>
+          <option>PURCHASING</option>
+          <option>ACCOUNTING</option>
+          <option>INVENTORY</option>
+          <option>QUALITY</option>
+          <option>MOLDSHOP</option>
+          <option>MAINTENANCE</option>
+          <option>PPIC</option>
+          <option>QMR</option>
+          <option>HRD</option>
+		  </select>
+		</label>
+	  </div>
       <div>
         <label>Tanggal Mulai Kontrak</label>
         <input id="mulai" type="date" />
@@ -92,11 +110,11 @@
       </div>
       <div>
         <label>NIK KTP</label>
-        <input id="nik" type="text" />
+        <input id="nik" type="number" />
       </div>
       <div>
         <label>Nomor Telepon</label>
-        <input id="telp" type="text" />
+        <input id="telp" type="number" />
       </div>
       <div>
         <label>Alamat</label>
@@ -106,6 +124,10 @@
         <label>Tempat/Tanggal Lahir</label>
         <input id="ttl" type="date" />
       </div>
+	  <div>
+		<label>Gaji (Rp):</label>
+		<input id="gaji" type="text" oninput="formatRupiah(this)" />
+	  </div>
     </div>
 
     <div class="sig-wrap" style="margin-top:12px">
@@ -151,12 +173,12 @@
       <div class="page pbreak">
         <p style="text-align:center">No: 3/ HR-FJM / I / <span id="tahun"></span></p>
         <hr>
-        
+        <center><img src="fom.jpg" alt="logo pt"></center>
         <h2>PT. FEDERASI JAYA MANDIRI</h2>
         <h3>PERJANJIAN KERJA WAKTU TERTENTU</h3>
         <p>Pada hari ini, <u><span id="tanggalwaktu"></span></u> dibuat perjanjian kerja antara:</p>
                   <div>
-                     <h4><u><b>PIHAK PERTAMA</b></u></h4>
+                     <h4><u><b>Pihak Pertama</b></u></h4>
                              <table>
                                   <tr>
                                   <td class="label-cell"><b>Nama</b></td>
@@ -174,7 +196,6 @@
                                    <td class="value-cell"><b>Cibarusah Indah 2 Blok E 24 No.13, Cibarusah, Bekasi.</b></td>
                                    </tr>
                              </table>
-					  <p>Didalam hal ini bertindak untuk dan atas nama PT. Federasi Jaya Mandiri  berkedudukan di Cibarusah Indah 2 Blok E 24 No.13, Cibarusah, Bekasi dan untuk selanjutnya disebut sebagai <b><u>PIHAK PERTAMA.</u></b></p>
                   </div>
         <div>                       
         <h4><u><b>PIHAK KEDUA</b></u></h4>
@@ -182,61 +203,38 @@
             <p><b>Jabatan:</b> <span id="r-jabatan"></span></p>
             <p><b>Masa Kontrak:</b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
             <div id="detail-karyawan"></div>
-			<br>
-			<p>Didalam hal ini bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut <b><u>PIHAK KEDUA.</u></b> </p>
       </div>
-		  <br>
-		  <br>
-		  <br>
-		  <hr>
-		   <p>Berdasarkan kesepakatan dan persetujuan bersama, para pihak dengan ini setuju dan sepakat untuk menandatangani dan mengikatkan diri dalam Perjanjian Kerja Waktu Tertentu dengan syarat-syarat dan ketentuan-ketentuan sebagai berikut :</p>
-           <br>
-		   <br>
-		   <br>
-		   <h3>Pasal 1</h3>
+
+       <div class="page" style="text-align:justify">
+        <h3>Pasal 1</h3>
         <p>Jangka waktu Perjanjian  Kerja ini adalah selama  12 ( Dua Belas )  bulan, terhitung mulai tanggal  16 January 2025  sampai dengan tanggal 15 January 2026. </p>
        
         <h3>Pasal 2</h3>
         <p>Pekerja akan bekerja pada di PT. Federasi Jaya Mandiri Di bagian:</p>
-          <form class="form1" action="">
-          <label for="lastName" class="last-name">Departement :</label>
-          <select name="buah" id="buah">
-          <option value="apel" required></option>
-          <option value="apel">IT</option>
-          <option value="pisang">GENERAL AFFAIR</option>
-          <option value="jeruk">PRODUKSI</option>
-          <option value="mangga">MARKETING</option>
-          <option value="mangga">PURCHASING</option>
-          <option value="mangga">ACCOUNTING</option>
-          <option value="mangga">INVENTORY</option>
-          <option value="mangga">QUALITY</option>
-          <option value="mangga">MOLDSHOP</option>
-          <option value="mangga">MAINTENANCE</option>
-          <option value="mangga">PPIC</option>
-          <option value="mangga">QMR</option>
-          <option value="mangga">HRD</option>
-          </select>
-          </form>     
+         <span id="out-bagian"></span>
+         
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
         <h3>Pasal 3</h3>
         <p>Tugas, wewenang dan tanggung jawab Karyawan akan diatur secara tersendiri oleh Kepala Departemen yang bersangkutan. Perincian tugas, wewenang dan tanggung jawab ( Job Description ) yang diberikan, akan merupakan bagian yang tidak terpisah dari kontrak kerja ini.</p>
 
         <h3>Pasal 4</h3>
         <p>Jumlah jam dan hari kerja Karyawan adalah 8 ( delapan ) jam per hari dan 5 ( lima ) hari per minggu, atau jadwal yang akan di atur secara tersendiri oleh Kepala Departemen yang bersangkutan dan akan merupakan bagian yang tidak terpisahkan dari kontrak kerja ini. Apabila diperlukan dan diminta oleh pihak Perusahaan, Karyawan bersedia untuk melaksanakan kerja lembur dengan persyaratan yang sesuai dengan kesepakatan dan peraturan Pemerintah yang berlaku.</p>
 
-        <h3>Pasal 5</h3>
-        <p>Selama bekerja pada masa Perjanjian Kerja ini, Karyawan berhak atas upah yang pengaturannya disepakati sebagai berikut :</p> 
-<ol type="a">
-    <li>Upah pokok sebesar  Rp.  / Bulan</li>
-	<p style="text-align: left;"><b><input type="text" id="nama" name="nama" placeholder="Masukkan Nila Gaji" size="50" maxlength="50"></b></p>
+        <h3><strong>Pasal 5</strong></h3>
+        <p style="text-align: justify;">Selama bekerja pada masa Perjanjian Kerja ini, Karyawan berhak atas upah yang pengaturannya disepakati sebagai berikut :</p>
+        <ol type="a">
+          <li>Upah pokok sebesar <span id="out-gaji">Rp 0</span> / Bulan</li>
 	<li>Tunjangan hari raya yang dibayarkan kepada PIHAK KEDUA  sesuai dengan kebijakan bagi pekerja waktu tertentu yang berlaku.</li>
 	<li>Perusahaan akan membayar upah pekerja setiap akhir bulan.</li>
 </ol>
 
                             <h3>Pasal 6</h3>
                              <p>Karyawan wajib tunduk pada peraturan-peraturan kerja yang dikeluarkan oleh Perusahaan dan/ atau pimpinan/ atasan langsung Karyawan, baik secara tertulis maupun lisan.</p>
-		                      <br>
-		                      <br>
-		                      <br>
                               <ol type="a">
                                  <li>PIHAK KEDUA wajib melaksanakan segala ketentuan sebagaimana dimaksud dalam perjanjian ini, maupun yang termuat pada peraturan perusahaan PIHAK PERTAMA</li>
 	                               <li>PIHAK KEDUA wajib melakukan tugas / pekerjaan dengan baik dan penuh tanggung jawab serta menurut pada perintah atasannya/pengusaha</li>
@@ -245,7 +243,10 @@
 
                                  <h3>Pasal 7</h3>
                                  <p>Karyawan memahami dan menyetujui sepenuhnya bahwa Perusahaan dapat melakukan Pemutusan Hubungan Kerja sebelum masa Perjanjian Kerja ini berakhir apabila karyawan yang bersangkutan melakukan pelanggaran sesuai peraturan perusahaan, undang-undang ketenagakerjaan dan berurusan dengan pihak berwajib tanpa adanya kewajiban Perusahaan untuk membayar ganti rugi atau kompensasi dalam bentuk apapun, apabila : </p>
-                                                                                                  
+                                 <br>
+                                 <br>
+                                 <br>
+                                 <br>
                               <ol type="a">
                                 <li>Karyawan melanggar  peraturan Perusahaan setelah dilakukan pembinaan dan melakukan perbuatan-perbuatan yang menyebabkan kerugian bagi Perusahaan. </li>
                                 <li>Karyawan tersandung kasus pidana atau perdata.</li>
@@ -268,8 +269,7 @@
                                 <li>Membuat onar atau berkelahi ditempat kerja.</li>
                                 <li>Membuwa keluar barang barang milik perusahaan dalam bentuk apapun tanpa dilengkapi surat ijin keluar.</li>
                               </ol>
-                                  <br>
-		                          <br>
+                                                           
                             <h3>Pasal 8 </h3>
                                 <p>Force Majeure adalah peristiwa – peristiwa yang berada diluar kemampuan yang dapat mempengaruhi kinerja dan pelaksanaan pekerjaan.</p>
                               <ol type="a">
@@ -277,7 +277,11 @@
                                 <li>Perang, revolusi, makar, huru hara, pemberontakan, kerusuhan, kekacauan dan kebakaran.</li>
                                 <li>Keadaan memaksa yang dinyatakan oleh pemerintah daerah atau pusat.</li>
                               </ol>
-                               <p>Apabila terjadi Force Majeure maka pihak yang lebih dahulu mengetahui wajib memberitahukan kepada pihak lainnya selambat – lambatnya dalam 14 ( empat belas hari ) setelah terjadi Force Majeure. Perusahaan dan Karyawan dibebaskan dari tanggung jawab dan tidak ada tuntut menuntut dalam memenuhi kewajiban yang tercantum dalam perjanjian ini, yang disebabkan dan diakibatkan oleh kejadian diluar keluasaan masing – masing pihak yang digolongkan sebagai Froce Majeure.</p>
+                              <br>
+                              <br>
+                              <br>
+                              <br>
+                                <p>Apabila terjadi Force Majeure maka pihak yang lebih dahulu mengetahui wajib memberitahukan kepada pihak lainnya selambat – lambatnya dalam 14 ( empat belas hari ) setelah terjadi Force Majeure. Perusahaan dan Karyawan dibebaskan dari tanggung jawab dan tidak ada tuntut menuntut dalam memenuhi kewajiban yang tercantum dalam perjanjian ini, yang disebabkan dan diakibatkan oleh kejadian diluar keluasaan masing – masing pihak yang digolongkan sebagai Froce Majeure.</p>
                                 
                                 <h3>Pasal 9 </h3>
                                 <p>Perjanjian Kerja ini tidak memberikan hak apapun kepada Karyawan untuk menjadi pekerja tetap kecuali atas penilaian atau persetujuan dari Perusahaan. Karyawan dengan ini menyatakan persetujuannya bahwa tidak ada hak-hak lain milik Karyawan selain dari yang tersebut dalam Perjanjian Kerja ini. Demikian Perjanjian Kerja  ini dibuat dalam rangkap 2 (dua) asli, masing – masing untuk Perusahaan dan Karyawan serta masing – masing mempunyai kekuatan hukum yang sama .</p>
@@ -328,7 +332,6 @@
     document.getElementById('tab-karyawan').classList.toggle('active', mode==='karyawan');
     document.getElementById('hrd-panel').style.display = (mode==='hrd')?'block':'none';
     document.getElementById('karyawan-panel').style.display = (mode==='karyawan')?'block':'none';
-	  
   }
 
   // —— Load from URL hash if present ——
@@ -339,16 +342,16 @@
       const data = dec(m[1]);
       // Fill contract render now
       fillContract(data);
-      // HRD image
       if(data.ttd_hrd) document.getElementById('img-hrd').src = data.ttd_hrd;
       // Switch to employee mode for signing
       switchMode('karyawan');
       document.getElementById('result').style.display = 'block';
-
-	// Tambah biar HRD tab terkunci
-		document.getElementById('tab-hrd').style.pointerEvents = 'none' ;
-		document.getElementById('tab-hrd').style.opacity = '0,5' ;
-    }
+	  
+	  // Tambah biar HRD tab terkunci
+		document.getElementById('tab-hrd').style.pointerEvents = 'none';
+		document.getElementById('tab-hrd').style.opacity = '0.5';
+    
+	}
   }
 
   // —— Build object from HRD form ——
@@ -356,12 +359,14 @@
     const d = {
       nama: document.getElementById('nama').value.trim(),
       jabatan: document.getElementById('jabatan').value.trim(),
+	  bagian: document.getElementById('bagian').value.trim(),
       mulai: document.getElementById('mulai').value,
       akhir: document.getElementById('akhir').value,
       nik: document.getElementById('nik').value.trim(),
       telp: document.getElementById('telp').value.trim(),
       alamat: document.getElementById('alamat').value.trim(),
       ttl: document.getElementById('ttl').value,
+	  gaji: document.getElementById('gaji').value.trim(),
       ttd_hrd: hrdPad && !hrdPad.isEmpty() ? hrdPad.toDataURL('image/png') : ''
     };
     return d;
@@ -386,6 +391,28 @@
       <p><b>Tempat/Tanggal Lahir:</b> ${fmtDate(d.ttl)||'-'}</p>
       <p><b>Nomor Telepon:</b> ${d.telp||'-'}</p>
       <p><b>Alamat:</b> ${d.alamat||'-'}</p>`;
+	  
+	 // tampilkan bagian (Pasal 2)
+  document.getElementById('out-bagian').textContent = d.bagian || '-';
+	  
+	// tampilkan gaji (jika ada), jika kosong tampil Rp 0
+    document.getElementById('out-gaji').textContent = d.gaji && d.gaji.length ? d.gaji : 'Rp 0';
+  }
+  
+ // Format rupiah input
+  function formatRupiah(el){
+    let angka = el.value.replace(/[^,\d]/g, "");
+    let split = angka.split(",");
+    let sisa = split[0].length % 3;
+    let rupiah = split[0].substr(0, sisa);
+    let ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+    if(ribuan){
+      let separator = sisa ? "." : "";
+      rupiah += separator + ribuan.join(".");
+    }
+    rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+    el.value = rupiah ? "Rp " + rupiah : "";
   }
 
   // —— Preview draft in page ——
@@ -399,24 +426,30 @@
     window.scrollTo({top:document.getElementById('result').offsetTop-10, behavior:'smooth'});
   }
 
-  // —— Generate link for employee ——
+  // Generate link for employee (include gaji)
   function generateEmployeeLink(){
-    const data = readHRDForm();
+    const data = readHRDForm(); // ambil semua data termasuk gaji
     if(!data.nama){ alert('Nama karyawan wajib diisi'); return; }
-    if(!data.ttd_hrd){ if(!confirm('TTD HRD belum diisi. Lanjutkan tanpa TTD?')) return; }
+    if(!data.ttd_hrd){
+      if(!confirm('TTD HRD belum diisi. Lanjutkan tanpa TTD?')) return;
+    }
     const link = `${location.origin}${location.pathname}#draft=${enc(data)}`;
     const el = document.getElementById('link-area');
     el.style.display = 'block';
     document.getElementById('draft-link').value = link;
-    previewDraft();
+    // preview agar user lihat hasil sebelum copy link
+    fillContract(data);
+    if(data.ttd_hrd) document.getElementById('img-hrd').src = data.ttd_hrd;
+    document.getElementById('result').style.display = 'block';
   }
+  
   function copyDraftLink(){
     const inp = document.getElementById('draft-link');
     inp.select(); inp.setSelectionRange(0, 99999);
     document.execCommand('copy');
   }
 
-  // —— Employee finalization ——
+  // Finalize by employee
   function finalizeAndDownload(){
     if(!empPad || empPad.isEmpty()){ alert('Mohon tanda tangani terlebih dahulu.'); return; }
     const hash = location.hash || '';
@@ -425,14 +458,18 @@
     const data = dec(m[1]);
     const empURL = empPad.toDataURL('image/png');
     // put signatures to render
-    document.getElementById('img-hrd').src = data.ttd_hrd || '';
+    if(data.ttd_hrd) document.getElementById('img-hrd').src = data.ttd_hrd;
     document.getElementById('img-emp').src = empURL;
+    // ensure gaji shown (in case)
+    document.getElementById('out-gaji').textContent = data.gaji || document.getElementById('out-gaji').textContent;
     downloadPDF();
   }
 
+  // Download PDF
   function downloadPDF(){
     const element = document.getElementById('content');
-    const opt = { margin: 0.5, filename: `Kontrak_Kerja_${(document.getElementById('r-nama').textContent||'').replace(/\s+/g,'_')}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2, useCORS: true, scrollY: 0 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }, pagebreak: { mode: ['css','legacy'] } };
+    const safeName = (document.getElementById('r-nama').textContent||'').replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_\-]/g,'');
+    const opt = { margin: 0.5, filename: `Kontrak_Kerja_${safeName || 'karyawan'}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2, useCORS: true, scrollY: 0 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }, pagebreak: { mode: ['css','legacy'] } };
     html2pdf().set(opt).from(element).save();
   }
 
@@ -441,30 +478,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
