@@ -53,21 +53,19 @@
   </style>
 </head>
 <body>
-
 <header>
-	 <center><img src="fjm.jpg" alt="logo pt"> 
+	 <center>
+	<img src="fjm.jpg" alt="logo pt"> 
     <h1>Perjanjian Kerja Waktu Tertentu</h1>
-    <h5>No:<span id="out-surat"></span>/ HR-FJM / I / <span id="tahun"></span></h5></center>  
+    <h5>No:<span id="out-surat"></span>/ HR-FJM / I / <span id="tahun"></span></h5>
+	 </center>  
   <hr>
 </header>
-
 <div class="container">
   <div class="tabs">
     <div class="tab active" id="tab-hrd" onclick="switchMode('hrd')">Pihak Pertama</div>
     <div class="tab" id="tab-karyawan" onclick="switchMode('karyawan')">Pihak Kedua</div>
   </div>
-
-
   <section class="canvas" id="hrd-panel">
     <h3>Input Data Karyawan (HRD)</h3>
     <div class="row">
@@ -140,12 +138,10 @@
         <button type="button" class="muted" onclick="clearSig(hrdPad)">Hapus TTD</button>
       </div>
     </div>
-
     <div class="actions">
       <button type="button" onclick="previewDraft()">Preview Draf</button>
       <button type="button" class="secondary" onclick="generateEmployeeLink()">Kirim ke Pihak Kedua (buat tautan)</button>
     </div>
-
     <div id="link-area" class="card" style="display:none">
       <div class="copybox">
         <input id="draft-link" readonly>
@@ -154,12 +150,9 @@
       <small class="muted">Bagikan tautan ini ke karyawan untuk menandatangani. Tautan berisi data kontrak (terenkripsi base64 di hash URL, tidak terkirim ke server).</small>
     </div>
   </section>
-
-  
   <section class="card" id="karyawan-panel" style="display:none">
     <h3>Tanda Tangan Pihak Kedua</h3>
     <p class="muted">Data kontrak di bawah ini sudah diisi HRD. Silakan cek dan tanda tangani.</p>
-
     <div class="sig-wrap">
       <label>Tanda Tangan ( Pihak kedua )</label>
       <canvas id="sig-emp" class="sig-canvas"></canvas>
@@ -169,8 +162,6 @@
       </div>
     </div>
   </section>
-
-  
   <section id="result" class="legal">
     <div id="content">
       <div class="page pbreak">
@@ -200,118 +191,95 @@
                                    </tr>
                              </table>
                   </div>
-        <div>                       
-        <h4><u><b>PIHAK KEDUA</b></u></h4>
-            <p><b>Karyawan:</b> <span id="r-nama"></span></p>
-            <p><b>Jabatan:</b> <span id="r-jabatan"></span></p>
-            <p><b>Masa Kontrak:</b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
-            <div id="detail-karyawan"></div>
-      </div>
-       <div class="page" style="text-align:justify">
-        <h3>Pasal 1</h3>
-        <p>Jangka waktu Perjanjian  Kerja ini adalah selama  12 ( Dua Belas ) bulan atau 1 ( satu ) Tahun. </p>
-        <h3>Pasal 2</h3>
-        <p>Pekerja akan bekerja pada di PT. Federasi Jaya Mandiri Di bagian:</p>
-         <span id="out-bagian"></span>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-		  <br>
-		  <br>
-		  <br> 
-        <h3>Pasal 3</h3>
-        <p>Tugas, wewenang dan tanggung jawab Karyawan akan diatur secara tersendiri oleh Kepala Departemen yang bersangkutan. Perincian tugas, wewenang dan tanggung jawab ( Job Description ) yang diberikan, akan merupakan bagian yang tidak terpisah dari kontrak kerja ini.</p>
-        <h3>Pasal 4</h3>
-        <p>Jumlah jam dan hari kerja Karyawan adalah 8 ( delapan ) jam per hari dan 5 ( lima ) hari per minggu, atau jadwal yang akan di atur secara tersendiri oleh Kepala Departemen yang bersangkutan dan akan merupakan bagian yang tidak terpisahkan dari kontrak kerja ini. Apabila diperlukan dan diminta oleh pihak Perusahaan, Karyawan bersedia untuk melaksanakan kerja lembur dengan persyaratan yang sesuai dengan kesepakatan dan peraturan Pemerintah yang berlaku.</p>
-        <h3><strong>Pasal 5</strong></h3>
-        <p style="text-align: justify;">Selama bekerja pada masa Perjanjian Kerja ini, Karyawan berhak atas upah yang pengaturannya disepakati sebagai berikut :</p>
-        <ol type="a">
-          <li>Upah pokok sebesar <span id="out-gaji">Rp 0</span> / Bulan</li>
-	<li>Tunjangan hari raya yang dibayarkan kepada PIHAK KEDUA  sesuai dengan kebijakan bagi pekerja waktu tertentu yang berlaku.</li>
-	<li>Perusahaan akan membayar upah pekerja setiap akhir bulan.</li>
-</ol>
-
-                            <h3>Pasal 6</h3>
-                             <p>Karyawan wajib tunduk pada peraturan-peraturan kerja yang dikeluarkan oleh Perusahaan dan/ atau pimpinan/ atasan langsung Karyawan, baik secara tertulis maupun lisan.</p>
-                              <ol type="a">
-                                 <li>PIHAK KEDUA wajib melaksanakan segala ketentuan sebagaimana dimaksud dalam perjanjian ini, maupun yang termuat pada peraturan perusahaan PIHAK PERTAMA</li>
-	                               <li>PIHAK KEDUA wajib melakukan tugas / pekerjaan dengan baik dan penuh tanggung jawab serta menurut pada perintah atasannya/pengusaha</li>
-	                               <li>Apabila pihak kedua mengundurkan diri atas kemauan sendiri, maka harus mengajukan permohonan minimal 1 (satu) bulan sebelumnya. Jika tidak memenuhi ketentuan ini maka semua hak nya akan ditunda sesuai keputusan PIHAK PERTAMA.</li>
-                              </ol>
-
-                                 <h3>Pasal 7</h3>
-                                 <p>Karyawan memahami dan menyetujui sepenuhnya bahwa Perusahaan dapat melakukan Pemutusan Hubungan Kerja sebelum masa Perjanjian Kerja ini berakhir apabila karyawan yang bersangkutan melakukan pelanggaran sesuai peraturan perusahaan, undang-undang ketenagakerjaan dan berurusan dengan pihak berwajib tanpa adanya kewajiban Perusahaan untuk membayar ganti rugi atau kompensasi dalam bentuk apapun, apabila : </p>
-                                 <br>
-                                 <br>
-                                 <br>
-                                 <br>
-                              <ol type="a">
-                                <li>Karyawan melanggar  peraturan Perusahaan setelah dilakukan pembinaan dan melakukan perbuatan-perbuatan yang menyebabkan kerugian bagi Perusahaan. </li>
-                                <li>Karyawan tersandung kasus pidana atau perdata.</li>
-                                <li>Karyawan mengundurkan diri atas kehendak sendiri dengan terlebih dahulu memberitahukan secara  tertulis 1 (satu) bulan sebelum tanggal pengunduran diri. </li>
-                                <li>Karyawan tidak mampu memenuhi standard kerja yang telah ditetapkan oleh Perusahaan, atasannya langsung dan/ atau petugas perusahaan yang ditunjuk.</li>
-                                <li>Karyawan meninggal dunia. </li>
-                                <li>Karyawan setuju bahwa PKWT ini berakhir demi hukum sesuai dengan jangka waktu yang ditentukan dan tidak ada tuntutan dikemudian hari.</li>
-                                <li>Melakukan penipuan, pencurian atau penggelapan barang milik perusahaan/ milik sesame pekerja didalam lingkungan perusahaan termasuk membantu atau kerja sama.</li>
-                                <li>Memberikan keterangan palsu atau yang dipalsukan sehingga merugikan perusahaan.</li>
-                                <li>Mabuk, meminum minuman keras memabukkan, memakai, membawa dan mengedarkan narkotika, psykotropika dan zat adiktif lainnya dilingkungan perusahaan.</li>
-                                <li>Melakukan perbuatan asusila atau perjudian dilingkungan kerja.</li>
-                                <li>Menyerang,menganiaya/memukul,mengancam, menghina, mencemarkan nama baik perusahaan, pengusaha, keluarga pengusaha, atasan, bawahan, atau teman kerja.</li>
-                                <li>Membujuk, memaksa pengusaha, keluarga pengusaha,atasan, bawahan atau rekan kerja untuk melakukan perbuatan yang bertentangan dengan peraturan perundang-undangan.</li>
-                                <li>Dengan sengaja merusak barang milik perusahaan, rekanan atau sesame pekerja.</li>
-                                <li>Dengan sengaja membiarkan teman sekerja/pengusaha dalam keadaan bahaya/terkena kecelakaan ditempat kerja.</li>
-                                <li>Membongkar atau membocorkan rahasia perusahaan atau mencemarkan nama baik pengusaha.</li>
-                                <li>Terbukti menerima suap / pemberian dalam bentuk apapun dari siapa saja untuk keuntungan diri sendiri, sehingga merugikan atau mengurangi keuntungan perusahaan.</li>
-                                <li>Membawa senjata tajam atau senjata api maupun benda-benda berbahaya kedalam lingkungan perusahaan.</li>
-                                <li>Memalsukan dokumen, tanda tangan, surat surat bukti,kwitansi kwitansi yang berhubungan dengan perusahaan yang mengakibatkan kerugian perusahaan.</li>
-                                <li>Membuat onar atau berkelahi ditempat kerja.</li>
-                                <li>Membuwa keluar barang barang milik perusahaan dalam bentuk apapun tanpa dilengkapi surat ijin keluar.</li>
-                              </ol>
-                                <br>
-		                        <br>
-                            <h3>Pasal 8 </h3>
-                                <p>Force Majeure adalah peristiwa – peristiwa yang berada diluar kemampuan yang dapat mempengaruhi kinerja dan pelaksanaan pekerjaan.</p>
-                              <ol type="a">
-                                <li>Bencana Alam ( Gempa, Tanah Longsor, Badai dan Banjir ).</li>
-                                <li>Perang, revolusi, makar, huru hara, pemberontakan, kerusuhan, kekacauan dan kebakaran.</li>
-                                <li>Keadaan memaksa yang dinyatakan oleh pemerintah daerah atau pusat.</li>
-                              </ol>
-                              <br>
-                              <br>
-                              <br>
-                              <br>
-                                <p>Apabila terjadi Force Majeure maka pihak yang lebih dahulu mengetahui wajib memberitahukan kepada pihak lainnya selambat – lambatnya dalam 14 ( empat belas hari ) setelah terjadi Force Majeure. Perusahaan dan Karyawan dibebaskan dari tanggung jawab dan tidak ada tuntut menuntut dalam memenuhi kewajiban yang tercantum dalam perjanjian ini, yang disebabkan dan diakibatkan oleh kejadian diluar keluasaan masing – masing pihak yang digolongkan sebagai Froce Majeure.</p>
-                                
-                                <h3>Pasal 9 </h3>
-                                <p>Perjanjian Kerja ini tidak memberikan hak apapun kepada Karyawan untuk menjadi pekerja tetap kecuali atas penilaian atau persetujuan dari Perusahaan. Karyawan dengan ini menyatakan persetujuannya bahwa tidak ada hak-hak lain milik Karyawan selain dari yang tersebut dalam Perjanjian Kerja ini. Demikian Perjanjian Kerja  ini dibuat dalam rangkap 2 (dua) asli, masing – masing untuk Perusahaan dan Karyawan serta masing – masing mempunyai kekuatan hukum yang sama .</p>
-        <br>
-        <br>
-        <p>Demikian Perjanjian Kerja  ini dibuat dalam rangkap 2 (dua) asli, masing – masing untuk Perusahaan dan Karyawan serta masing – masing mempunyai kekuatan hukum yang sama .</p>
-       </div> 
-        <table class="sign-table">
-          <tr>
-            <td class="sign-td">
-              <div class="sign-title">Pihak Pertama</div>
-              <div class="sig-box"><img id="img-hrd" class="sig-img" /></div>
-              <div class="under-name">( PT. FEDERASI JAYA MANDIRI )</div>
-            </td>
-            <td class="sign-td">
-              <div class="sign-title">Pihak Kedua</div>
-              <div class="sig-box"><img id="img-emp" class="sig-img" /></div>
-              <div class="under-name">( <span id="r-nama2"></span> )</div>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <div class="actions"><button class="muted" type="button" onclick="downloadPDF()">Unduh PDF</button></div>
-  </section>
-</div>
-
-<script>
+		                           <div>                       
+                                    <h4><u><b>PIHAK KEDUA</b></u></h4>
+                                    <p><b>Karyawan:</b> <span id="r-nama"></span></p>
+                                    <p><b>Jabatan:</b> <span id="r-jabatan"></span></p>
+                                    <p><b>Masa Kontrak:</b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
+                                    <div id="detail-karyawan"></div>
+                                    </div>
+                                    <div class="page" style="text-align:justify">
+                                    <h3>Pasal 1</h3>
+                                    <p>Jangka waktu Perjanjian  Kerja ini adalah selama  12 ( Dua Belas ) bulan atau 1 ( satu ) Tahun. </p>
+                                    <h3>Pasal 2</h3>
+                                    <p>Pekerja akan bekerja pada di PT. Federasi Jaya Mandiri Di bagian:</p>
+                                    <span id="out-bagian"></span>
+                                    <br> 
+                                    <h3>Pasal 3</h3>
+                                    <p>Tugas, wewenang dan tanggung jawab Karyawan akan diatur secara tersendiri oleh Kepala Departemen yang bersangkutan. Perincian tugas, wewenang dan tanggung jawab ( Job Description ) yang diberikan, akan merupakan bagian yang tidak terpisah dari kontrak kerja ini.</p>
+                                    <h3>Pasal 4</h3>
+                                    <p>Jumlah jam dan hari kerja Karyawan adalah 8 ( delapan ) jam per hari dan 5 ( lima ) hari per minggu, atau jadwal yang akan di atur secara tersendiri oleh Kepala Departemen yang bersangkutan dan akan merupakan bagian yang tidak terpisahkan dari kontrak kerja ini. Apabila diperlukan dan diminta oleh pihak Perusahaan, Karyawan bersedia untuk melaksanakan kerja lembur dengan persyaratan yang sesuai dengan kesepakatan dan peraturan Pemerintah yang berlaku.</p>
+                                    <h3><strong>Pasal 5</strong></h3>
+                                    <p>Selama bekerja pada masa Perjanjian Kerja ini, Karyawan berhak atas upah yang pengaturannya disepakati sebagai berikut :</p>
+                                    <ol type="a">
+                                    <li>Upah pokok sebesar <span id="out-gaji">Rp 0</span> / Bulan</li>
+	                                <li>Tunjangan hari raya yang dibayarkan kepada PIHAK KEDUA  sesuai dengan kebijakan bagi pekerja waktu tertentu yang berlaku.</li>
+	                                <li>Perusahaan akan membayar upah pekerja setiap akhir bulan.</li>
+                                    </ol>
+                                    <h3>Pasal 6</h3>
+                                    <p>Karyawan wajib tunduk pada peraturan-peraturan kerja yang dikeluarkan oleh Perusahaan dan/ atau pimpinan/ atasan langsung Karyawan, baik secara tertulis maupun lisan.</p>
+                                    <ol type="a">
+                                    <li>PIHAK KEDUA wajib melaksanakan segala ketentuan sebagaimana dimaksud dalam perjanjian ini, maupun yang termuat pada peraturan perusahaan PIHAK PERTAMA</li>
+	                                <li>PIHAK KEDUA wajib melakukan tugas / pekerjaan dengan baik dan penuh tanggung jawab serta menurut pada perintah atasannya/pengusaha</li>
+	                                <li>Apabila pihak kedua mengundurkan diri atas kemauan sendiri, maka harus mengajukan permohonan minimal 1 (satu) bulan sebelumnya. Jika tidak memenuhi ketentuan ini maka semua hak nya akan ditunda sesuai keputusan PIHAK PERTAMA.</li>
+                                    </ol>
+                                    <h3>Pasal 7</h3>
+                                    <p>Karyawan memahami dan menyetujui sepenuhnya bahwa Perusahaan dapat melakukan Pemutusan Hubungan Kerja sebelum masa Perjanjian Kerja ini berakhir apabila karyawan yang bersangkutan melakukan pelanggaran sesuai peraturan perusahaan, undang-undang ketenagakerjaan dan berurusan dengan pihak berwajib tanpa adanya kewajiban Perusahaan untuk membayar ganti rugi atau kompensasi dalam bentuk apapun, apabila : </p>
+                                    <ol type="a">
+                                    <li>Karyawan melanggar  peraturan Perusahaan setelah dilakukan pembinaan dan melakukan perbuatan-perbuatan yang menyebabkan kerugian bagi Perusahaan. </li>
+                                    <li>Karyawan tersandung kasus pidana atau perdata.</li>
+                                    <li>Karyawan mengundurkan diri atas kehendak sendiri dengan terlebih dahulu memberitahukan secara  tertulis 1 (satu) bulan sebelum tanggal pengunduran diri. </li>
+                                    <li>Karyawan tidak mampu memenuhi standard kerja yang telah ditetapkan oleh Perusahaan, atasannya langsung dan/ atau petugas perusahaan yang ditunjuk.</li>
+                                    <li>Karyawan meninggal dunia. </li>
+                                    <li>Karyawan setuju bahwa PKWT ini berakhir demi hukum sesuai dengan jangka waktu yang ditentukan dan tidak ada tuntutan dikemudian hari.</li>
+                                    <li>Melakukan penipuan, pencurian atau penggelapan barang milik perusahaan/ milik sesame pekerja didalam lingkungan perusahaan termasuk membantu atau kerja sama.</li>
+                                    <li>Memberikan keterangan palsu atau yang dipalsukan sehingga merugikan perusahaan.</li>
+                                    <li>Mabuk, meminum minuman keras memabukkan, memakai, membawa dan mengedarkan narkotika, psykotropika dan zat adiktif lainnya dilingkungan perusahaan.</li>
+                                    <li>Melakukan perbuatan asusila atau perjudian dilingkungan kerja.</li>
+                                    <li>Menyerang,menganiaya/memukul,mengancam, menghina, mencemarkan nama baik perusahaan, pengusaha, keluarga pengusaha, atasan, bawahan, atau teman kerja.</li>
+                                    <li>Membujuk, memaksa pengusaha, keluarga pengusaha,atasan, bawahan atau rekan kerja untuk melakukan perbuatan yang bertentangan dengan peraturan perundang-undangan.</li>
+                                    <li>Dengan sengaja merusak barang milik perusahaan, rekanan atau sesame pekerja.</li>
+                                    <li>Dengan sengaja membiarkan teman sekerja/pengusaha dalam keadaan bahaya/terkena kecelakaan ditempat kerja.</li>
+                                    <li>Membongkar atau membocorkan rahasia perusahaan atau mencemarkan nama baik pengusaha.</li>
+                                    <li>Terbukti menerima suap / pemberian dalam bentuk apapun dari siapa saja untuk keuntungan diri sendiri, sehingga merugikan atau mengurangi keuntungan perusahaan.</li>
+                                    <li>Membawa senjata tajam atau senjata api maupun benda-benda berbahaya kedalam lingkungan perusahaan.</li>
+                                    <li>Memalsukan dokumen, tanda tangan, surat surat bukti,kwitansi kwitansi yang berhubungan dengan perusahaan yang mengakibatkan kerugian perusahaan.</li>
+                                    <li>Membuat onar atau berkelahi ditempat kerja.</li>
+                                    <li>Membuwa keluar barang barang milik perusahaan dalam bentuk apapun tanpa dilengkapi surat ijin keluar.</li>
+                                    </ol>
+                                    <h3>Pasal 8 </h3>
+                                    <p>Force Majeure adalah peristiwa – peristiwa yang berada diluar kemampuan yang dapat mempengaruhi kinerja dan pelaksanaan pekerjaan.</p>
+                                    <ol type="a">
+                                    <li>Bencana Alam ( Gempa, Tanah Longsor, Badai dan Banjir ).</li>
+                                    <li>Perang, revolusi, makar, huru hara, pemberontakan, kerusuhan, kekacauan dan kebakaran.</li>
+                                    <li>Keadaan memaksa yang dinyatakan oleh pemerintah daerah atau pusat.</li>
+                                    </ol>
+                                    <br>
+                                    <p>Apabila terjadi Force Majeure maka pihak yang lebih dahulu mengetahui wajib memberitahukan kepada pihak lainnya selambat – lambatnya dalam 14 ( empat belas hari ) setelah terjadi Force Majeure. Perusahaan dan Karyawan dibebaskan dari tanggung jawab dan tidak ada tuntut menuntut dalam memenuhi kewajiban yang tercantum dalam perjanjian ini, yang disebabkan dan diakibatkan oleh kejadian diluar keluasaan masing – masing pihak yang digolongkan sebagai Froce Majeure.</p>
+                                    <h3>Pasal 9 </h3>
+                                    <p>Perjanjian Kerja ini tidak memberikan hak apapun kepada Karyawan untuk menjadi pekerja tetap kecuali atas penilaian atau persetujuan dari Perusahaan. Karyawan dengan ini menyatakan persetujuannya bahwa tidak ada hak-hak lain milik Karyawan selain dari yang tersebut dalam Perjanjian Kerja ini. Demikian Perjanjian Kerja  ini dibuat dalam rangkap 2 (dua) asli, masing – masing untuk Perusahaan dan Karyawan serta masing – masing mempunyai kekuatan hukum yang sama .</p>
+                                    <p>Demikian Perjanjian Kerja  ini dibuat dalam rangkap 2 (dua) asli, masing – masing untuk Perusahaan dan Karyawan serta masing – masing mempunyai kekuatan hukum yang sama .</p>
+                                    </div> 
+                                    <table class="sign-table">
+                                    <tr>
+                                    <td class="sign-td">
+                                    <div class="sign-title">Pihak Pertama</div>
+                                    <div class="sig-box"><img id="img-hrd" class="sig-img" /></div>
+                                    <div class="under-name">( PT. FEDERASI JAYA MANDIRI )</div>
+                                    </td>
+                                    <td class="sign-td">
+                                    <div class="sign-title">Pihak Kedua</div>
+                                    <div class="sig-box"><img id="img-emp" class="sig-img" /></div>
+                                    <div class="under-name">( <span id="r-nama2"></span> )</div>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    </div>
+                                    </div>
+                                    <div class="actions"><button class="muted" type="button" onclick="downloadPDF()">Unduh PDF</button></div>
+                               </section>
+                          </div>
+                 <script>
   // —— Utilities ——
   const $ = (sel)=>document.querySelector(sel);
   const fmtDate = (v)=> v? new Date(v).toISOString().slice(0,10): '';
@@ -481,6 +449,7 @@
 </script>
 </body>
 </html>
+
 
 
 
