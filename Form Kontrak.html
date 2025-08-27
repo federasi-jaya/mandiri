@@ -222,7 +222,8 @@
         <h3>Pasal 5</h3>
         <p style="text-align: justify;">Selama bekerja pada masa Perjanjian Kerja ini, Karyawan berhak atas upah yang pengaturannya disepakati sebagai berikut :</p> 
 <ol type="a">
-    <li>Upah pokok sebesar  Rp. 5,584,611,- / Bulan</li>
+    <li>Upah pokok sebesar  Rp.  / Bulan</li>
+	<p style="text-align: left;"><b><input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" size="50" maxlength="50"></b></p>
 	<li>Tunjangan hari raya yang dibayarkan kepada PIHAK KEDUA  sesuai dengan kebijakan bagi pekerja waktu tertentu yang berlaku.</li>
 	<li>Perusahaan akan membayar upah pekerja setiap akhir bulan.</li>
 </ol>
@@ -326,6 +327,7 @@
     document.getElementById('tab-karyawan').classList.toggle('active', mode==='karyawan');
     document.getElementById('hrd-panel').style.display = (mode==='hrd')?'block':'none';
     document.getElementById('karyawan-panel').style.display = (mode==='karyawan')?'block':'none';
+	document.getElementById('form1').classList.toggle('active', mode==='form1');  
   }
 
   // —— Load from URL hash if present ——
@@ -434,3 +436,4 @@
 </script>
 </body>
 </html>
+
