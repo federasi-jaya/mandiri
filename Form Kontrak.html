@@ -74,6 +74,7 @@
     <h3>Input Data Karyawan (HRD)</h3>
     <div class="row">
       <div>
+		  <input type="hidden" id="no_kontrak" />
         <label>Nama Karyawan</label>
         <input id="nama" placeholder="Nama lengkap" />
       </div>
@@ -172,7 +173,7 @@
   <section id="result" class="legal">
     <div id="content">
       <div class="page pbreak">
-        <h5><p style="text-align:center">No: <span class="no-kontrak"></span></p></h5>
+        <center><span id="no-kontrak"></span></center>
 
         <hr>
         <center><img src="fjm.jpg" alt="logs pt" width="150"></center>
@@ -348,21 +349,26 @@
       alamat: document.getElementById('alamat').value.trim(),
       ttl: document.getElementById('ttl').value,
 	  gaji: document.getElementById('gaji').value.trim(),
+	  no_kontrak: document.getElementById("no_kontrak").value.trim(),
       ttd_hrd: hrdPad && !hrdPad.isEmpty() ? hrdPad.toDataURL('image/png') : ''
     };
     return d;
   }
 
-  // —— Fill contract HTML ——
   function fillContract(d){
-  const nomorKontrak = generateNomorKontrak();
-  document.querySelectorAll('.no-kontrak').forEach(el=>{
+  // gunakan nomor kontrak lama jika sudah ada, kalau belum buat baru
+  let nomorKontrak = d.no_kontrak || generateNomorKontrak();
+  d.no_kontrak = nomorKontrak;
+
+  // isi semua elemen yang menampilkan nomor kontrak
+  document.querySelectorAll('#no-kontrak, .no-kontrak').forEach(el=>{
     el.textContent = nomorKontrak;
   });
 
   // panggil fungsi isi tanggal/hari
   isiTanggalHari();
 
+  document.getElementById("no_kontrak").value = d.no_kontrak;
   document.getElementById('r-nama').textContent = d.nama || '-';
   document.getElementById('r-nama2').textContent = d.nama || '-';
   document.getElementById('r-jabatan').textContent = d.jabatan || '-';
@@ -449,10 +455,17 @@ function generateNomorKontrak(){
     if(!data.ttd_hrd){
       if(!confirm('TTD HRD belum diisi. Lanjutkan tanpa TTD?')) return;
     }
+	  if(!data.no_kontrak){
+    data.no_kontrak = generateNomorKontrak();
+  }
+  document.getElementById("no_kontrak").value = data.no_kontrak;
+	  
+	  // buat link dengan data terenkripsi
     const link = `${location.origin}${location.pathname}#draft=${enc(data)}`;
     const el = document.getElementById('link-area');
     el.style.display = 'block';
     document.getElementById('draft-link').value = link;
+	  
     // preview agar user lihat hasil sebelum copy link
     fillContract(data);
     if(data.ttd_hrd) document.getElementById('img-hrd').src = data.ttd_hrd;
@@ -494,6 +507,7 @@ function generateNomorKontrak(){
 </script>
 </body>
 </html>
+
 
 
 
