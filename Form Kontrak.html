@@ -8,6 +8,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.6/dist/signature_pad.umd.min.js"></script>
   <style>
+	   .protected-text {
+      -webkit-user-select: none; /* Untuk Safari */
+      -khtml-user-select: none; /* Untuk Konqueror HTML */
+      -moz-user-select: none; /* Untuk Firefox */
+      -ms-user-select: none; /* Untuk Internet Explorer/Edge */
+      user-select: none; /* Untuk browser modern seperti Chrome dan Opera */
+    }
     :root{--primary:#0d6efd;--muted:#f4f6f8;--ink:#111;}
     *{box-sizing:border-box}
     body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fff;color:#222}
@@ -173,12 +180,11 @@
   <section id="result" class="legal">
     <div id="content">
       <div class="page pbreak">
-        <center><span id="no-kontrak"></span></center>
-
-        <hr>
+        
         <center><img src="fjm.JPG" alt="logs pt" width="150"></center>
         <h2>PT. FEDERASI JAYA MANDIRI</h2>
         <h3>PERJANJIAN KERJA WAKTU TERTENTU</h3>
+		  <center><span id="no-kontrak"></span></center>
 		  <hr>
         <p>Pada hari ini, <span id="hari"></span> <span id="tanggal"></span> <span id="bulan"></span> <span id="tahun"></span> dibuat perjanjian kerja antara:</p>
                   <div>
@@ -204,9 +210,9 @@
                                    </div>
 		                           <div>                       
                                     <h4><u><b>PIHAK KEDUA</b></u></h4>
-                                    <p><b>Karyawan:</b> <span id="r-nama"></span></p>
-                                    <p><b>Jabatan:</b> <span id="r-jabatan"></span></p>
-                                    <p><b>Masa Kontrak:</b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
+                                    <p><b>Karyawan<pre>:</pre></b> <span id="r-nama"></span></p>
+                                    <p><b>Jabatan<pre>:</pre></b> <span id="r-jabatan"></span></p>
+                                    <p><b>Masa Kontrak<pre>:</pre></b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
                                     <div id="detail-karyawan"></div>
 									<p>Didalam hal ini bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut <b>PIHAK KEDUA.</b></p>
 								    </div>
@@ -377,10 +383,10 @@
   document.getElementById('r-akhir').textContent = fmtDate(d.akhir);
 
   document.getElementById('detail-karyawan').innerHTML = `
-    <p><b>NIK KTP:</b> ${d.nik||'-'}</p>
-    <p><b>Tempat/Tanggal Lahir:</b> ${fmtDate(d.ttl)||'-'}</p>
-    <p><b>Nomor Telepon:</b> ${d.telp||'-'}</p>
-    <p><b>Alamat:</b> ${d.alamat||'-'}</p>`;
+    <p><b>NIK KTP<pre>:</pre></b> ${d.nik||'-'}</p>
+    <p><b>Tempat/Tanggal Lahir<pre>:</pre></b> ${fmtDate(d.ttl)||'-'}</p>
+    <p><b>Nomor Telepon<pre>:</pre></b> ${d.telp||'-'}</p>
+    <p><b>Alamat<pre>:</pre></b> ${d.alamat||'-'}</p>`;
 
   document.getElementById('out-bagian').textContent = d.bagian || '-';
   document.getElementById('out-gaji').textContent = d.gaji && d.gaji.length ? d.gaji : 'Rp 0';
@@ -506,8 +512,23 @@ function generateNomorKontrak(){
   // —— Init ——
   window.addEventListener('load', ()=>{ initPads(); loadFromHash(); });
 </script>
+	<script type="text/javascript">
+    // Menonaktifkan pemilihan teks
+    document.onselectstart = function() { return false; };
+
+    // Menonaktifkan klik kanan
+    document.oncontextmenu = function() { return false; };
+
+    // Menonaktifkan Ctrl+C, Ctrl+A, dll.
+    document.onkeydown = function(e) {
+      if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88 || e.keyCode === 65)) {
+        return false;
+      }
+    };
+    </script>
 </body>
 </html>
+
 
 
 
