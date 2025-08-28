@@ -211,9 +211,9 @@
                                    </div>
 		                           <div>                       
                                     <h4><u><b>PIHAK KEDUA</b></u></h4>
-                                    <p><b>Karyawan<pre>:</pre></b> <span id="r-nama"></span></p>
-                                    <p><b>Jabatan<pre>:</pre></b> <span id="r-jabatan"></span></p>
-                                    <p><b>Masa Kontrak<pre>:</pre></b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
+                                    <p><b>Karyawan&nbsp;:</b> <span id="r-nama"></span></p>
+                                    <p><b>Jabatan&nbsp;:</b> <span id="r-jabatan"></span></p>
+                                    <p><b>Masa Kontrak&nbsp;:</b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
                                     <div id="detail-karyawan"></div>
 									<p>Didalam hal ini bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut <b>PIHAK KEDUA.</b></p>
 								    </div>
@@ -384,10 +384,10 @@
   document.getElementById('r-akhir').textContent = fmtDate(d.akhir);
 
   document.getElementById('detail-karyawan').innerHTML = `
-    <p><b>NIK KTP<pre>:</pre></b> ${d.nik||'-'}</p>
-    <p><b>Tempat/Tanggal Lahir<pre>:</pre></b> ${fmtDate(d.ttl)||'-'}</p>
-    <p><b>Nomor Telepon<pre>:</pre></b> ${d.telp||'-'}</p>
-    <p><b>Alamat<pre>:</pre></b> ${d.alamat||'-'}</p>`;
+    <p><b>NIK KTP&nbsp;:</b> ${d.nik||'-'}</p>
+    <p><b>Tempat/Tanggal Lahir&nbsp;:</b> ${fmtDate(d.ttl)||'-'}</p>
+    <p><b>Nomor Telepon&nbsp;:</b> ${d.telp||'-'}</p>
+    <p><b>Alamat&nbsp;:</b> ${d.alamat||'-'}</p>`;
 
   document.getElementById('out-bagian').textContent = d.bagian || '-';
   document.getElementById('out-gaji').textContent = d.gaji && d.gaji.length ? d.gaji : 'Rp 0';
@@ -529,6 +529,7 @@ function generateNomorKontrak(){
     </script>
 </body>
 </html>
+
 
 
 
