@@ -46,13 +46,44 @@
     h2,h3,h4{text-align:center}
 
     /* Signature block inside contract */
-    .sign-table{width:100%;margin-top:32px;text-align:center;border-collapse:collapse}
+    .sign-table{
+      width:100%;
+      margin-top:32px;
+      text-align:center;
+      border-collapse:collapse;
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+    .sign-table tr,
+    .sign-table td{
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
     .sign-td{width:50%;vertical-align:top;padding:8px}
-    .sign-title{font-weight:700;margin-bottom:12px}
-    .sig-box{width:180px;height:50px;border-bottom:1px solid #000;margin:0 auto;display:flex;align-items:center;justify-content:center}
-	.sig-box1{width:180px;height:0px;border-bottom:1px solid #000;margin:0 auto;display:flex;align-items:center;justify-content:center}
-    .sig-img{max-height:50px}
-    .under-name{margin-top:6px}
+    .sign-title{font-weight:700;margin-bottom:8px}
+    .sig-box,
+    .sig-box1{
+      width:180px;
+      height:65px;
+      border-bottom:1px solid #000;
+      margin:0 auto;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      overflow:visible;
+    }
+    .sig-img{
+      display:block;
+      max-width:170px;
+      max-height:58px;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+    }
+    .under-name{
+      margin-top:8px;
+      white-space:nowrap;
+    }
 
     .inline{display:inline-block}
     .copybox{display:flex;gap:8px;align-items:center}
@@ -291,7 +322,7 @@
 			                        <div class="page" style="text-align:justify">
                                     <div>
 									<table class="sign-table">
-                                    <tr>
+                                    <tr style="page-break-inside:avoid;break-inside:avoid;">
                                     <td class="sign-td">
                                     <div class="sign-title">Pihak Pertama</div>
 										<img src="hrd.png" alt="logs pt" width="50">
