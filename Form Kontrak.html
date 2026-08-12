@@ -96,9 +96,18 @@
     }
 
     /* Signature block */
+    .signature-page{
+      width:100%;
+      max-width:190mm;
+      margin:0;
+      padding:0;
+      page-break-before:auto;
+      break-before:auto;
+    }
+
     .sign-table{
       width:100%;
-      margin-top:24px;
+      margin-top:10px;
       text-align:center;
       border-collapse:collapse;
       table-layout:fixed;
@@ -110,6 +119,11 @@
     .sign-table td{
       page-break-inside:avoid;
       break-inside:avoid;
+    }
+
+    .signature-page{
+      page-break-before:auto !important;
+      break-before:auto !important;
     }
 
     .sign-td{
@@ -192,6 +206,11 @@
       .pbreak{
         page-break-after:always;
         break-after:page;
+      }
+
+      .signature-page{
+        page-break-before:auto !important;
+        break-before:auto !important;
       }
 
       .sign-table{
@@ -752,7 +771,6 @@ function generateNomorKontrak(){
       },
       pagebreak: {
         mode: ['css', 'legacy'],
-        before: ['.signature-page'],
         avoid: [
           '.sign-table',
           '.sign-table tr',
@@ -807,6 +825,7 @@ function generateNomorKontrak(){
 </script>
 	</body>
 </html>
+
 
 
 
