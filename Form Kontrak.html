@@ -39,26 +39,205 @@
     .sig-canvas{border:2px solid #0a0a0a;border-radius:8px;width:100%;max-width:380px;height:120px}
     .sig-actions{display:flex;gap:8px}
 
-    /* Contract render */
+    /* =========================
+       CONTRACT / PDF - A4 SAFE
+       ========================= */
     #result{display:none}
-    .page{padding:2px;border:25px solid #fff;border-radius:20px;background:#fff;margin-bottom:24px}
-    .pbreak{page-break-after:always;margin-bottom:32px}
-    h2,h3,h4{text-align:center}
 
-    /* Signature block inside contract */
-    .sign-table{width:100%;margin-top:32px;text-align:center;border-collapse:collapse}
-    .sign-td{width:50%;vertical-align:top;padding:8px}
-    .sign-title{font-weight:700;margin-bottom:12px}
-    .sig-box{width:180px;height:50px;border-bottom:1px solid #000;margin:0 auto;display:flex;align-items:center;justify-content:center}
-	.sig-box1{width:180px;height:0px;border-bottom:1px solid #000;margin:0 auto;display:flex;align-items:center;justify-content:center}
-    .sig-img{max-height:50px}
-    .under-name{margin-top:6px}
+    /* Jangan gunakan border besar/margin besar pada area yang dicetak.
+       html2pdf akan memakai margin PDF sendiri. */
+    #content{
+      width:100%;
+      max-width:190mm;
+      margin:0 auto;
+      padding:0;
+      background:#fff;
+      color:#222;
+      overflow:visible;
+    }
+
+    .page{
+      width:100%;
+      max-width:190mm;
+      min-height:0;
+      box-sizing:border-box;
+      padding:0;
+      border:0;
+      border-radius:0;
+      background:#fff;
+      margin:0;
+      overflow:visible;
+    }
+
+    .page.pbreak{
+      page-break-after:always;
+      break-after:page;
+      margin-bottom:0;
+    }
+
+    /* Hindari pemotongan elemen penting ketika html2pdf membuat halaman */
+    p, li, table, tr, td, h2, h3, h4{
+      overflow-wrap:break-word;
+    }
+
+    h2,h3,h4{text-align:center}
+    h2,h3,h4,p,ol,ul,table{max-width:100%}
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      table-layout:fixed;
+    }
+
+    td{
+      vertical-align:top;
+      overflow-wrap:anywhere;
+      word-break:normal;
+    }
+
+    /* Signature block */
+    .signature-page{
+      width:100%;
+      max-width:190mm;
+      margin:0;
+      padding:0;
+      page-break-before:auto;
+      break-before:auto;
+    }
+
+    /* Blok tanda tangan dibuat seperti format surat resmi:
+       dua kolom seimbang, jarak vertikal konsisten, dan garis tanda
+       tangan berada pada posisi yang sama. */
+    .sign-table{
+      width:100%;
+      margin-top:18px;
+      text-align:center;
+      border-collapse:collapse;
+      table-layout:fixed;
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+
+    .sign-table tr,
+    .sign-table td{
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+
+    .signature-page{
+      page-break-before:auto !important;
+      break-before:auto !important;
+    }
+
+    .sign-td{
+      width:50%;
+      vertical-align:top;
+      padding:0 18px;
+    }
+
+    .sign-title{
+      font-weight:700;
+      font-size:14px;
+      line-height:1.2;
+      margin:0 0 10px 0;
+    }
+
+    /* Area tanda tangan dibuat sama tinggi untuk kedua pihak. */
+    .sig-box,
+    .sig-box1{
+      width:180px;
+      height:92px;
+      border-bottom:1px solid #000;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      box-sizing:border-box;
+      position:relative;
+    }
+
+    /* TTD digital tetap berada di tengah area tanpa menyentuh garis. */
+    .sig-img{
+      display:block;
+      max-width:165px;
+      max-height:68px;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      flex:0 0 auto;
+    }
+
+    /* Logo/QR pihak pertama yang berada di atas area tanda tangan.
+       Dibuat konsisten ukurannya dan tidak menggeser garis terlalu jauh. */
+    .sign-td > img{
+      display:block;
+      width:50px;
+      height:50px;
+      object-fit:contain;
+      margin:0 auto 4px auto;
+    }
+
+    .under-name{
+      margin-top:8px;
+      white-space:nowrap;
+      font-size:13px;
+      line-height:1.2;
+    }
 
     .inline{display:inline-block}
     .copybox{display:flex;gap:8px;align-items:center}
     .copybox input{flex:1}
 
-    @media (max-width:680px){.row{grid-template-columns:1fr}}
+    /* Tampilan browser tetap responsif */
+    @media (max-width:680px){
+      .row{grid-template-columns:1fr}
+      #content{max-width:100%}
+    }
+
+    /* CSS khusus saat proses cetak/PDF */
+    @media print{
+      @page{
+        size:A4 portrait;
+        margin:10mm;
+      }
+
+      body{
+        margin:0;
+        padding:0;
+        background:#fff;
+      }
+
+      #content{
+        width:190mm;
+        max-width:190mm;
+        margin:0;
+        padding:0;
+      }
+
+      .page{
+        width:190mm;
+        max-width:190mm;
+        margin:0;
+        padding:0;
+        border:0;
+      }
+
+      .pbreak{
+        page-break-after:always;
+        break-after:page;
+      }
+
+      .signature-page{
+        page-break-before:auto !important;
+        break-before:auto !important;
+      }
+
+      .sign-table{
+        page-break-inside:avoid;
+        break-inside:avoid;
+      }
+    }
   </style>
 </head>
 <header> 
@@ -285,22 +464,22 @@
 			                        <p>Masing – masing berhak untuk menyimpan Soft file perjanjian ini, baik oleh Perusahaan maupun karyawan yang memiliki kekuatan hukum yang sama.</p>
 									
 			                        <div>
-									 <p>Cikarang, <span id="tanggalCikarang"></span></p>
+									 <p style="margin:0 0 2px 0;">Cikarang, <span id="tanggalCikarang"></span></p>
 									 </div>
 		                         	</div>
 			                        <div class="page" style="text-align:justify">
                                     <div>
 									<table class="sign-table">
-                                    <tr>
+                                    <tr style="page-break-inside:avoid;break-inside:avoid;">
                                     <td class="sign-td">
                                     <div class="sign-title">Pihak Pertama</div>
-										<img src="hrd.png" alt="logs pt" width="50">
-                                    <div class="sig-box1"><img id="img-hrd" class="sig-img" /></div>
+										<img src="hrd.png" alt="Identitas Pihak Pertama" width="50" height="50">
+                                    <div class="sig-box1"><img id="img-hrd" class="sig-img" alt="TTD Pihak Pertama" /></div>
                                     <div class="under-name">( LINA PRATIWI )</div>
                                     </td>
                                     <td class="sign-td">
                                     <div class="sign-title">Pihak Kedua</div>
-                                    <div class="sig-box"><img id="img-emp" class="sig-img" /></div>
+                                    <div class="sig-box"><img id="img-emp" class="sig-img" alt="TTD Pihak Kedua" /></div>
                                     <div class="under-name">( <span id="r-nama2"></span> )</div>
                                     </td>
                                     </tr>
@@ -322,11 +501,55 @@
 
   // —— Signature pads ——
   let hrdPad, empPad;
+  function resizeSignatureCanvas(canvas){
+    if(!canvas) return;
+
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    const rect = canvas.getBoundingClientRect();
+
+    const width = Math.max(Math.round(rect.width * ratio), 1);
+    const height = Math.max(Math.round(rect.height * ratio), 1);
+
+    if(canvas.width !== width || canvas.height !== height){
+      const oldData = canvas.toDataURL ? canvas.toDataURL('image/png') : null;
+
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+      if(oldData){
+        const img = new Image();
+        img.onload = () => ctx.drawImage(img, 0, 0, rect.width, rect.height);
+        img.src = oldData;
+      }
+    }
+  }
+
   function initPads(){
     const hrdCanvas = document.getElementById('sig-hrd');
-    hrdPad = new SignaturePad(hrdCanvas);
     const empCanvas = document.getElementById('sig-emp');
-    empPad = new SignaturePad(empCanvas);
+
+    resizeSignatureCanvas(hrdCanvas);
+    resizeSignatureCanvas(empCanvas);
+
+    hrdPad = new SignaturePad(hrdCanvas, {
+      minWidth: 0.7,
+      maxWidth: 2.0,
+      penColor: '#000'
+    });
+
+    empPad = new SignaturePad(empCanvas, {
+      minWidth: 0.7,
+      maxWidth: 2.0,
+      penColor: '#000'
+    });
+
+    window.addEventListener('resize', () => {
+      resizeSignatureCanvas(hrdCanvas);
+      resizeSignatureCanvas(empCanvas);
+    });
   }
   function clearSig(pad){ pad && pad.clear(); }
 
@@ -525,11 +748,82 @@ function generateNomorKontrak(){
   }
 
   // Download PDF
-  function downloadPDF(){
+  async function downloadPDF(){
     const element = document.getElementById('content');
-    const safeName = (document.getElementById('r-nama').textContent||'').replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_\-]/g,'');
-    const opt = { margin: 0.5, filename: `Kontrak_Kerja_${safeName || 'karyawan'}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2, useCORS: true, scrollY: 0 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }, pagebreak: { mode: ['css','legacy'] } };
-    html2pdf().set(opt).from(element).save();
+
+    if(!element){
+      alert('Konten kontrak tidak ditemukan.');
+      return;
+    }
+
+    const safeName = (document.getElementById('r-nama').textContent || '')
+      .replace(/\s+/g,'_')
+      .replace(/[^a-zA-Z0-9_\-]/g,'');
+
+    /*
+      A4 = 210 x 297 mm.
+      Margin 10 mm kiri/kanan -> area cetak 190 mm.
+      Jangan memakai margin 0.5 inch + width 980px sekaligus karena
+      kombinasi tersebut dapat membuat sisi kanan/isi kontrak terpotong.
+    */
+    const opt = {
+      margin: [0.39, 0.39, 0.39, 0.39],
+      filename: `Kontrak_Kerja_${safeName || 'karyawan'}.pdf`,
+      image: {
+        type: 'jpeg',
+        quality: 0.98
+      },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        allowTaint: false,
+        backgroundColor: '#ffffff',
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: 794,
+        logging: false
+      },
+      jsPDF: {
+        unit: 'in',
+        format: 'a4',
+        orientation: 'portrait',
+        compress: true
+      },
+      pagebreak: {
+        mode: ['css', 'legacy'],
+        avoid: [
+          '.sign-table',
+          '.sign-table tr',
+          '.sign-td',
+          '.sig-box',
+          '.sig-box1'
+        ]
+      }
+    };
+
+    /*
+      Tunggu font dan gambar selesai dimuat agar posisi teks/TTD
+      tidak berubah saat html2canvas mengambil screenshot.
+    */
+    if(document.fonts && document.fonts.ready){
+      await document.fonts.ready;
+    }
+
+    const images = Array.from(element.querySelectorAll('img'));
+    await Promise.all(images.map(img => {
+      if(img.complete) return Promise.resolve();
+      return new Promise(resolve => {
+        img.addEventListener('load', resolve, {once:true});
+        img.addEventListener('error', resolve, {once:true});
+      });
+    }));
+
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+    await html2pdf()
+      .set(opt)
+      .from(element)
+      .save();
   }
 
   // —— Init ——
@@ -576,3 +870,5 @@ function generateNomorKontrak(){
 
 
 
+Teks_yang_ditempel_1_6_FIXED_V3.html
+HTML
