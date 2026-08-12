@@ -105,12 +105,9 @@
       break-before:auto;
     }
 
-    /* Blok tanda tangan dibuat seperti format surat resmi:
-       dua kolom seimbang, jarak vertikal konsisten, dan garis tanda
-       tangan berada pada posisi yang sama. */
     .sign-table{
       width:100%;
-      margin-top:18px;
+      margin-top:10px;
       text-align:center;
       border-collapse:collapse;
       table-layout:fixed;
@@ -132,57 +129,40 @@
     .sign-td{
       width:50%;
       vertical-align:top;
-      padding:0 18px;
+      padding:8px;
     }
 
     .sign-title{
       font-weight:700;
-      font-size:14px;
-      line-height:1.2;
-      margin:0 0 10px 0;
+      margin-bottom:8px;
     }
 
-    /* Area tanda tangan dibuat sama tinggi untuk kedua pihak. */
     .sig-box,
     .sig-box1{
       width:180px;
-      height:92px;
+      height:70px;
       border-bottom:1px solid #000;
       margin:0 auto;
       display:flex;
-      align-items:center;
+      align-items:flex-end;
       justify-content:center;
       overflow:hidden;
       box-sizing:border-box;
-      position:relative;
     }
 
-    /* TTD digital tetap berada di tengah area tanpa menyentuh garis. */
     .sig-img{
       display:block;
       max-width:165px;
-      max-height:68px;
+      max-height:62px;
       width:auto;
       height:auto;
       object-fit:contain;
       flex:0 0 auto;
     }
 
-    /* Logo/QR pihak pertama yang berada di atas area tanda tangan.
-       Dibuat konsisten ukurannya dan tidak menggeser garis terlalu jauh. */
-    .sign-td > img{
-      display:block;
-      width:50px;
-      height:50px;
-      object-fit:contain;
-      margin:0 auto 4px auto;
-    }
-
     .under-name{
       margin-top:8px;
       white-space:nowrap;
-      font-size:13px;
-      line-height:1.2;
     }
 
     .inline{display:inline-block}
@@ -464,7 +444,7 @@
 			                        <p>Masing – masing berhak untuk menyimpan Soft file perjanjian ini, baik oleh Perusahaan maupun karyawan yang memiliki kekuatan hukum yang sama.</p>
 									
 			                        <div>
-									 <p style="margin:0 0 2px 0;">Cikarang, <span id="tanggalCikarang"></span></p>
+									 <p>Cikarang, <span id="tanggalCikarang"></span></p>
 									 </div>
 		                         	</div>
 			                        <div class="page" style="text-align:justify">
@@ -473,7 +453,7 @@
                                     <tr style="page-break-inside:avoid;break-inside:avoid;">
                                     <td class="sign-td">
                                     <div class="sign-title">Pihak Pertama</div>
-										<img src="hrd.png" alt="Identitas Pihak Pertama" width="50" height="50">
+										<img src="hrd.png" alt="logs pt" width="50">
                                     <div class="sig-box1"><img id="img-hrd" class="sig-img" alt="TTD Pihak Pertama" /></div>
                                     <div class="under-name">( LINA PRATIWI )</div>
                                     </td>
@@ -845,6 +825,7 @@ function generateNomorKontrak(){
 </script>
 	</body>
 </html>
+
 
 
 
