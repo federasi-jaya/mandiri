@@ -32,7 +32,7 @@
     button{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer}
     button.secondary{background:#0aa06e}
     button.muted{background:#0aa06e}
-    .muted{color:#fff}
+    .muted{color:#555}
 
     /* Signature pad */
     .sig-wrap{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
@@ -95,6 +95,82 @@
       word-break:normal;
     }
 
+    .contract-body{
+      width:100%;
+      max-width:100%;
+      margin:0;
+      padding:0;
+    }
+
+    .contract-body > p,
+    .contract-body > ol,
+    .contract-body > ul{
+      margin-top:8px;
+      margin-bottom:8px;
+    }
+
+    .contract-body h3{
+      margin:14px 0 7px;
+      line-height:1.2;
+    }
+
+    .identity-table{
+      width:100%;
+      border-collapse:collapse;
+      table-layout:fixed;
+      margin:6px 0 10px;
+    }
+
+    .identity-table td{
+      padding:2px 0;
+      border:0;
+    }
+
+    .identity-table .label-cell{width:25%}
+    .identity-table .colon-cell{width:4%; text-align:center}
+    .identity-table .value-cell{width:71%}
+
+    .employee-detail{
+      width:100%;
+      margin:6px 0 10px;
+    }
+
+    .employee-detail .detail-row{
+      display:grid;
+      grid-template-columns:25% 4% 71%;
+      align-items:start;
+      margin:3px 0;
+    }
+
+    .employee-detail .detail-colon{text-align:center}
+
+    .signature-section{
+      width:100%;
+      margin-top:16px;
+      page-break-inside:avoid;
+      break-inside:avoid;
+    }
+
+    .legal p,
+    .legal li{
+      line-height:1.45;
+    }
+
+    .legal ol{
+      padding-left:24px;
+      margin-top:6px;
+      margin-bottom:8px;
+    }
+
+    .legal li{
+      margin-bottom:3px;
+    }
+
+    img{
+      max-width:100%;
+    }
+
+
     /* Signature block */
     .signature-page{
       width:100%;
@@ -110,7 +186,7 @@
        tangan berada pada posisi yang sama. */
     .sign-table{
       width:100%;
-      margin-top:18px;
+      margin:0;
       text-align:center;
       border-collapse:collapse;
       table-layout:fixed;
@@ -132,7 +208,7 @@
     .sign-td{
       width:50%;
       vertical-align:top;
-      padding:0 18px;
+      padding:0 12px;
     }
 
     .sign-title{
@@ -146,7 +222,7 @@
     .sig-box,
     .sig-box1{
       width:180px;
-      height:92px;
+      height:88px;
       border-bottom:1px solid #000;
       margin:0 auto;
       display:flex;
@@ -233,9 +309,19 @@
         break-before:auto !important;
       }
 
-      .sign-table{
+      .signature-section,
+      .sign-table,
+      .sign-table tr,
+      .sign-td,
+      .sig-box,
+      .sig-box1{
         page-break-inside:avoid;
         break-inside:avoid;
+      }
+
+      .contract-body{
+        page-break-inside:auto;
+        break-inside:auto;
       }
     }
   </style>
@@ -372,7 +458,7 @@
         <p>Pada hari ini, <span id="hari"></span> <span id="tanggal"></span> <span id="bulan"></span> <span id="tahun"></span> dibuat Perjanjian Kerja Digital antara:</p>
                   <div>
                      <h4><u><b>PIHAK PERTAMA</b></u></h4>
-                             <table>
+                             <table class="identity-table">
                                   <tr>
                                   <td class="label-cell"><b>Nama</b></td>
                                   <td class="colon-cell"><b>:</b></td>
@@ -389,7 +475,7 @@
                                    <td class="value-cell"><b>CIBARUSAH INDAH 2 BLOK E24 NO.13, CIBARUSAH KOTA, CIBARUSAH, BEKASI</b></td>
                                    </tr>
                                    </table>
-					               <p>Didalam hal ini bertindak untuk dan atas nama <b>PT. FEDERASI JAYA MANDIRI</b> dan untuk selanjutnya disebut sebagai <b>PIHAK PERTAMA.</b></p>
+					               <p>Di dalam hal ini bertindak untuk dan atas nama <b>PT. FEDERASI JAYA MANDIRI</b> dan untuk selanjutnya disebut sebagai <b>PIHAK PERTAMA.</b></p>
                                    </div>
 		                           <div>                       
                                     <h4><u><b>PIHAK KEDUA</b></u></h4>
@@ -397,7 +483,7 @@
                                     <p><b>Jabatan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b> <span id="r-jabatan"></span></p>
                                     <p><b>Masa Kontrak&nbsp;&nbsp;&nbsp;&nbsp;:</b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
                                     <div id="detail-karyawan"></div>
-									<p>Didalam hal ini bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut <b>PIHAK KEDUA.</b></p>
+									<p>Di dalam hal ini bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut <b>PIHAK KEDUA.</b></p>
 								    </div>
 									<p>Berdasarkan kesepakatan dan persetujuan bersama, para pihak dengan ini <b>setuju dan sepakat</b> untuk menandatangani dan mengikatkan diri dalam Perjanjian Kerja Digital dengan syarat-syarat dan ketentuan-ketentuan sebagai berikut :</p>
                                     <br>
@@ -409,12 +495,12 @@
                                     <h3>Pasal 3</h3>
                                     <p>Tugas, wewenang dan tanggung jawab Karyawan akan diatur secara tersendiri oleh Kepala Departemen yang bersangkutan. Perincian tugas, wewenang dan tanggung jawab ( Job Description ) yang diberikan, akan merupakan bagian yang tidak terpisah dari kontrak kerja ini.</p>
                                     <h3>Pasal 4</h3>
-                                    <p>Jumlah jam dan hari kerja Karyawan adalah 8 ( delapan ) jam per hari dan 5 ( lima ) hari per minggu, atau jadwal yang akan di atur secara tersendiri oleh Kepala Departemen yang bersangkutan dan akan merupakan bagian yang tidak terpisahkan dari kontrak kerja ini. Apabila diperlukan dan diminta oleh pihak Perusahaan, Karyawan bersedia untuk melaksanakan kerja lembur dengan persyaratan yang sesuai dengan kesepakatan dan peraturan Pemerintah yang berlaku.</p>
+                                    <p>Jumlah jam dan hari kerja Karyawan adalah 8 ( delapan ) jam per hari dan 5 ( lima ) hari per minggu, atau jadwal yang akan diatur secara tersendiri oleh Kepala Departemen yang bersangkutan dan akan merupakan bagian yang tidak terpisahkan dari kontrak kerja ini. Apabila diperlukan dan diminta oleh pihak Perusahaan, Karyawan bersedia untuk melaksanakan kerja lembur dengan persyaratan yang sesuai dengan kesepakatan dan peraturan Pemerintah yang berlaku.</p>
                                     <h3><strong>Pasal 5</strong></h3>
                                     <p>Selama bekerja pada masa Perjanjian Kerja Digital ini, Karyawan berhak atas upah yang pengaturannya disepakati sebagai berikut :</p>
                                     <ol type="a">
                                     <li>Upah pokok sebesar <b><span id="out-gaji">Rp 0</b></span> / Bulan</li>
-	                                <li>Insentip Keagamaan yang dibayarkan kepada PIHAK KEDUA  sesuai dengan kebijakan bagi pekerja waktu tertentu yang berlaku.</li>
+	                                <li>Insentif Keagamaan yang dibayarkan kepada PIHAK KEDUA  sesuai dengan kebijakan bagi pekerja waktu tertentu yang berlaku.</li>
 	                                <li>Perusahaan akan membayar upah pekerja setiap akhir bulan.</li>
                                     </ol>
                                     <h3>Pasal 6</h3>
@@ -430,23 +516,23 @@
                                     <li>Karyawan melanggar  peraturan Perusahaan setelah dilakukan pembinaan dan melakukan perbuatan-perbuatan yang menyebabkan kerugian bagi Perusahaan. </li>
                                     <li>Karyawan tersandung kasus pidana atau perdata.</li>
                                     <li>Karyawan mengundurkan diri atas kehendak sendiri dengan terlebih dahulu memberitahukan secara  tertulis 1 (satu) bulan sebelum tanggal pengunduran diri. </li>
-                                    <li>Karyawan tidak mampu memenuhi standard kerja yang telah ditetapkan oleh Perusahaan, atasannya langsung dan/ atau petugas perusahaan yang ditunjuk.</li>
+                                    <li>Karyawan tidak mampu memenuhi standar kerja yang telah ditetapkan oleh Perusahaan, atasannya langsung dan/ atau petugas perusahaan yang ditunjuk.</li>
                                     <li>Karyawan meninggal dunia. </li>
                                     <li>Karyawan setuju bahwa Perjanjian kerja Digital ini berakhir demi hukum sesuai dengan jangka waktu yang ditentukan dan tidak ada tuntutan dikemudian hari.</li>
-                                    <li>Melakukan penipuan, pencurian atau penggelapan barang milik perusahaan/ milik sesame pekerja didalam lingkungan perusahaan termasuk membantu atau kerja sama.</li>
+                                    <li>Melakukan penipuan, pencurian atau penggelapan barang milik perusahaan/ milik sesama pekerja didalam lingkungan perusahaan termasuk membantu atau kerja sama.</li>
                                     <li>Memberikan keterangan palsu atau yang dipalsukan sehingga merugikan perusahaan.</li>
-                                    <li>Mabuk, meminum minuman keras memabukkan, memakai, membawa dan mengedarkan narkotika, psykotropika dan zat adiktif lainnya dilingkungan perusahaan.</li>
+                                    <li>Mabuk, meminum minuman keras memabukkan, memakai, membawa dan mengedarkan narkotika, psikotropika dan zat adiktif lainnya dilingkungan perusahaan.</li>
                                     <li>Melakukan perbuatan asusila atau perjudian dilingkungan kerja.</li>
                                     <li>Menyerang, menganiaya/memukul, mengancam, menghina, mencemarkan nama baik perusahaan, pengusaha, keluarga pengusaha, atasan, bawahan, atau teman kerja.</li>
                                     <li>Membujuk, memaksa pengusaha, keluarga pengusaha,atasan, bawahan atau rekan kerja untuk melakukan perbuatan yang bertentangan dengan peraturan perundang-undangan.</li>
-                                    <li>Dengan sengaja merusak barang milik perusahaan, rekanan atau sesame pekerja.</li>
+                                    <li>Dengan sengaja merusak barang milik perusahaan, rekanan atau sesama pekerja.</li>
                                     <li>Dengan sengaja membiarkan teman sekerja/pengusaha dalam keadaan bahaya/terkena kecelakaan ditempat kerja.</li>
                                     <li>Membongkar atau membocorkan rahasia perusahaan atau mencemarkan nama baik pengusaha.</li>
                                     <li>Terbukti menerima suap / pemberian dalam bentuk apapun dari siapa saja untuk keuntungan diri sendiri, sehingga merugikan atau mengurangi keuntungan perusahaan.</li>
                                     <li>Membawa senjata tajam atau senjata api maupun benda-benda berbahaya kedalam lingkungan perusahaan.</li>
                                     <li>Memalsukan dokumen, tanda tangan, surat surat bukti,kwitansi kwitansi yang berhubungan dengan perusahaan yang mengakibatkan kerugian perusahaan.</li>
                                     <li>Membuat onar atau berkelahi ditempat kerja.</li>
-                                    <li>Membuwa keluar barang barang milik perusahaan dalam bentuk apapun tanpa dilengkapi surat ijin keluar.</li>
+                                    <li>Membawa keluar barang barang milik perusahaan dalam bentuk apapun tanpa dilengkapi surat ijin keluar.</li>
                                     </ol>
                                     <h3>Pasal 8 </h3>
                                     <p>Force Majeure adalah peristiwa – peristiwa yang berada diluar kemampuan yang dapat mempengaruhi kinerja dan pelaksanaan pekerjaan.</p>
@@ -456,7 +542,7 @@
                                     <li>Keadaan memaksa yang dinyatakan oleh pemerintah daerah atau pusat.</li>
                                     </ol>
                                     <br>
-                                    <p>Apabila terjadi Force Majeure maka pihak yang lebih dahulu mengetahui wajib memberitahukan kepada pihak lainnya selambat – lambatnya dalam 14 ( empat belas hari ) setelah terjadi Force Majeure. Perusahaan dan Karyawan dibebaskan dari tanggung jawab dan tidak ada tuntut menuntut dalam memenuhi kewajiban yang tercantum dalam perjanjian ini, yang disebabkan dan diakibatkan oleh kejadian diluar keluasaan masing – masing pihak yang digolongkan sebagai Froce Majeure.</p>
+                                    <p>Apabila terjadi Force Majeure maka pihak yang lebih dahulu mengetahui wajib memberitahukan kepada pihak lainnya selambat – lambatnya dalam 14 ( empat belas hari ) setelah terjadi Force Majeure. Perusahaan dan Karyawan dibebaskan dari tanggung jawab dan tidak ada tuntut menuntut dalam memenuhi kewajiban yang tercantum dalam perjanjian ini, yang disebabkan dan diakibatkan oleh kejadian diluar keluasaan masing – masing pihak yang digolongkan sebagai Force Majeure.</p>
                                     <h3>Pasal 9 </h3>
                                     <p>Perjanjian Kerja Digital ini tidak memberikan hak apapun kepada Karyawan untuk menjadi pekerja tetap kecuali atas penilaian atau persetujuan dari Perusahaan. Karyawan dengan ini menyatakan persetujuannya bahwa tidak ada hak-hak lain milik Karyawan selain dari yang tersebut dalam Perjanjian Kerja Digital ini.</p>
                                     <br>
@@ -598,6 +684,15 @@
       ttd_hrd: hrdPad && !hrdPad.isEmpty() ? hrdPad.toDataURL('image/png') : ''
     };
     return d;
+  }
+
+  function escapeHTML(value){
+    return String(value ?? '')
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#039;');
   }
 
   function fillContract(d){
@@ -767,7 +862,7 @@ function generateNomorKontrak(){
       kombinasi tersebut dapat membuat sisi kanan/isi kontrak terpotong.
     */
     const opt = {
-      margin: [0.39, 0.39, 0.39, 0.39],
+      margin: [0.35, 0.35, 0.35, 0.35],
       filename: `Kontrak_Kerja_${safeName || 'karyawan'}.pdf`,
       image: {
         type: 'jpeg',
