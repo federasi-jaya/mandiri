@@ -32,298 +32,33 @@
     button{background:var(--primary);color:#fff;border:none;border-radius:10px;padding:10px 14px;cursor:pointer}
     button.secondary{background:#0aa06e}
     button.muted{background:#0aa06e}
-    .muted{color:#555}
+    .muted{color:#fff}
 
     /* Signature pad */
     .sig-wrap{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
     .sig-canvas{border:2px solid #0a0a0a;border-radius:8px;width:100%;max-width:380px;height:120px}
     .sig-actions{display:flex;gap:8px}
 
-    /* =========================
-       CONTRACT / PDF - A4 SAFE
-       ========================= */
+    /* Contract render */
     #result{display:none}
-
-    /* Jangan gunakan border besar/margin besar pada area yang dicetak.
-       html2pdf akan memakai margin PDF sendiri. */
-    #content{
-      width:100%;
-      max-width:190mm;
-      margin:0 auto;
-      padding:0;
-      background:#fff;
-      color:#222;
-      overflow:visible;
-    }
-
-    .page{
-      width:100%;
-      max-width:190mm;
-      min-height:0;
-      box-sizing:border-box;
-      padding:0;
-      border:0;
-      border-radius:0;
-      background:#fff;
-      margin:0;
-      overflow:visible;
-    }
-
-    .page.pbreak{
-      page-break-after:always;
-      break-after:page;
-      margin-bottom:0;
-    }
-
-    /* Hindari pemotongan elemen penting ketika html2pdf membuat halaman */
-    p, li, table, tr, td, h2, h3, h4{
-      overflow-wrap:break-word;
-    }
-
+    .page{padding:2px;border:25px solid #fff;border-radius:20px;background:#fff;margin-bottom:24px}
+    .pbreak{page-break-after:always;margin-bottom:32px}
     h2,h3,h4{text-align:center}
-    h2,h3,h4,p,ol,ul,table{max-width:100%}
 
-    table{
-      width:100%;
-      border-collapse:collapse;
-      table-layout:fixed;
-    }
-
-    td{
-      vertical-align:top;
-      overflow-wrap:anywhere;
-      word-break:normal;
-    }
-
-    .contract-body{
-      width:100%;
-      max-width:100%;
-      margin:0;
-      padding:0;
-    }
-
-    .contract-body > p,
-    .contract-body > ol,
-    .contract-body > ul{
-      margin-top:8px;
-      margin-bottom:8px;
-    }
-
-    .contract-body h3{
-      margin:14px 0 7px;
-      line-height:1.2;
-    }
-
-    .identity-table{
-      width:100%;
-      border-collapse:collapse;
-      table-layout:fixed;
-      margin:6px 0 10px;
-    }
-
-    .identity-table td{
-      padding:2px 0;
-      border:0;
-    }
-
-    .identity-table .label-cell{width:25%}
-    .identity-table .colon-cell{width:4%; text-align:center}
-    .identity-table .value-cell{width:71%}
-
-    .employee-detail{
-      width:100%;
-      margin:6px 0 10px;
-    }
-
-    .employee-detail .detail-row{
-      display:grid;
-      grid-template-columns:25% 4% 71%;
-      align-items:start;
-      margin:3px 0;
-    }
-
-    .employee-detail .detail-colon{text-align:center}
-
-    .signature-section{
-      width:100%;
-      margin-top:16px;
-      page-break-inside:avoid;
-      break-inside:avoid;
-    }
-
-    .legal p,
-    .legal li{
-      line-height:1.45;
-    }
-
-    .legal ol{
-      padding-left:24px;
-      margin-top:6px;
-      margin-bottom:8px;
-    }
-
-    .legal li{
-      margin-bottom:3px;
-    }
-
-    img{
-      max-width:100%;
-    }
-
-
-    /* Signature block */
-    .signature-page{
-      width:100%;
-      max-width:190mm;
-      margin:0;
-      padding:0;
-      page-break-before:auto;
-      break-before:auto;
-    }
-
-    /* Blok tanda tangan dibuat seperti format surat resmi:
-       dua kolom seimbang, jarak vertikal konsisten, dan garis tanda
-       tangan berada pada posisi yang sama. */
-    .sign-table{
-      width:100%;
-      margin:0;
-      text-align:center;
-      border-collapse:collapse;
-      table-layout:fixed;
-      page-break-inside:avoid;
-      break-inside:avoid;
-    }
-
-    .sign-table tr,
-    .sign-table td{
-      page-break-inside:avoid;
-      break-inside:avoid;
-    }
-
-    .signature-page{
-      page-break-before:auto !important;
-      break-before:auto !important;
-    }
-
-    .sign-td{
-      width:50%;
-      vertical-align:top;
-      padding:0 12px;
-    }
-
-    .sign-title{
-      font-weight:700;
-      font-size:14px;
-      line-height:1.2;
-      margin:0 0 10px 0;
-    }
-
-    /* Area tanda tangan dibuat sama tinggi untuk kedua pihak. */
-    .sig-box,
-    .sig-box1{
-      width:180px;
-      height:88px;
-      border-bottom:1px solid #000;
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      box-sizing:border-box;
-      position:relative;
-    }
-
-    /* TTD digital tetap berada di tengah area tanpa menyentuh garis. */
-    .sig-img{
-      display:block;
-      max-width:165px;
-      max-height:68px;
-      width:auto;
-      height:auto;
-      object-fit:contain;
-      flex:0 0 auto;
-    }
-
-    /* Logo/QR pihak pertama yang berada di atas area tanda tangan.
-       Dibuat konsisten ukurannya dan tidak menggeser garis terlalu jauh. */
-    .sign-td > img{
-      display:block;
-      width:50px;
-      height:50px;
-      object-fit:contain;
-      margin:0 auto 4px auto;
-    }
-
-    .under-name{
-      margin-top:8px;
-      white-space:nowrap;
-      font-size:13px;
-      line-height:1.2;
-    }
+    /* Signature block inside contract */
+    .sign-table{width:100%;margin-top:32px;text-align:center;border-collapse:collapse}
+    .sign-td{width:50%;vertical-align:top;padding:8px}
+    .sign-title{font-weight:700;margin-bottom:12px}
+    .sig-box{width:180px;height:50px;border-bottom:1px solid #000;margin:0 auto;display:flex;align-items:center;justify-content:center}
+	.sig-box1{width:180px;height:0px;border-bottom:1px solid #000;margin:0 auto;display:flex;align-items:center;justify-content:center}
+    .sig-img{max-height:50px}
+    .under-name{margin-top:6px}
 
     .inline{display:inline-block}
     .copybox{display:flex;gap:8px;align-items:center}
     .copybox input{flex:1}
 
-    /* Tampilan browser tetap responsif */
-    @media (max-width:680px){
-      .row{grid-template-columns:1fr}
-      #content{max-width:100%}
-    }
-
-    /* CSS khusus saat proses cetak/PDF */
-    @media print{
-      @page{
-        size:A4 portrait;
-        margin:10mm;
-      }
-
-      body{
-        margin:0;
-        padding:0;
-        background:#fff;
-      }
-
-      #content{
-        width:190mm;
-        max-width:190mm;
-        margin:0;
-        padding:0;
-      }
-
-      .page{
-        width:190mm;
-        max-width:190mm;
-        margin:0;
-        padding:0;
-        border:0;
-      }
-
-      .pbreak{
-        page-break-after:always;
-        break-after:page;
-      }
-
-      .signature-page{
-        page-break-before:auto !important;
-        break-before:auto !important;
-      }
-
-      .signature-section,
-      .sign-table,
-      .sign-table tr,
-      .sign-td,
-      .sig-box,
-      .sig-box1{
-        page-break-inside:avoid;
-        break-inside:avoid;
-      }
-
-      .contract-body{
-        page-break-inside:auto;
-        break-inside:auto;
-      }
-    }
+    @media (max-width:680px){.row{grid-template-columns:1fr}}
   </style>
 </head>
 <header> 
@@ -369,6 +104,7 @@
           <option>QUALITY</option>
           <option>MOLDSHOP</option>
           <option>MAINTENANCE</option>
+		  <option>ENGINEERING</option>
           <option>PPIC</option>
           <option>QMR</option>
           <option>HRD</option>
@@ -407,7 +143,7 @@
 
     <div class="sig-wrap" style="margin-top:12px">
       <label>Tanda Tangan (Pihak Pertama)</label>
-		<img src="hrd.png" alt="logs pt" width="150">
+		<img src="natalia.png" alt="logs pt" width="150">
       <canvas id="sig-hrd" class="sig-canvas"></canvas>
       <div class="sig-actions">
         <button type="button" class="muted" onclick="clearSig(hrdPad)">Hapus TTD</button>
@@ -455,14 +191,14 @@
 		  <hr>
 		  <div class="page" style="text-align:justify">
         <div class="page" style="text-align:justify">
-        <p>Pada hari ini, <span id="hari"></span> <span id="tanggal"></span> <span id="bulan"></span> <span id="tahun"></span> dibuat Perjanjian Kerja Digital antara:</p>
+        <p>Pada hari ini, <span id="hari"></span> <span id="tanggal"></span> <span id="bulan"></span> <span id="tahun"></span> dibuat perjanjian kerja antara:</p>
                   <div>
                      <h4><u><b>PIHAK PERTAMA</b></u></h4>
-                             <table class="identity-table">
+                             <table>
                                   <tr>
                                   <td class="label-cell"><b>Nama</b></td>
                                   <td class="colon-cell"><b>:</b></td>
-                                  <td class="value-cell"><b>LINA PRATIWI</b></td>
+                                  <td class="value-cell"><b>Lina Pratiwi</b></td>
                                    </tr>
                                    <tr>
                                    <td class="label-cell"><b>Jabatan</b></td>
@@ -472,10 +208,10 @@
                                    <tr>
                                    <td class="label-cell"><b>Alamat</b></td>
                                    <td class="colon-cell"><b>:</b></td>
-                                   <td class="value-cell"><b>CIBARUSAH INDAH 2 BLOK E24 NO.13, CIBARUSAH KOTA, CIBARUSAH, BEKASI</b></td>
+                                   <td class="value-cell"><b>Cibarusah Indah 2 Blok E24/13, Bekasi</b></td>
                                    </tr>
                                    </table>
-					               <p>Di dalam hal ini bertindak untuk dan atas nama <b>PT. FEDERASI JAYA MANDIRI</b> dan untuk selanjutnya disebut sebagai <b>PIHAK PERTAMA.</b></p>
+					               <p>Didalam hal ini bertindak untuk dan atas nama <b>PT. FEDERASI JAYA MANDIRI</b> berkedudukan di Cibarusah Indah 2 Blok E24/13, Bekasi dan untuk selanjutnya disebut sebagai <b>PIHAK PERTAMA.</b></p>
                                    </div>
 		                           <div>                       
                                     <h4><u><b>PIHAK KEDUA</b></u></h4>
@@ -483,24 +219,25 @@
                                     <p><b>Jabatan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</b> <span id="r-jabatan"></span></p>
                                     <p><b>Masa Kontrak&nbsp;&nbsp;&nbsp;&nbsp;:</b> <span id="r-mulai"></span> s/d <span id="r-akhir"></span></p>
                                     <div id="detail-karyawan"></div>
-									<p>Di dalam hal ini bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut <b>PIHAK KEDUA.</b></p>
+									<p>Didalam hal ini bertindak untuk dan atas nama diri sendiri dan untuk selanjutnya disebut <b>PIHAK KEDUA.</b></p>
 								    </div>
 									<p>Berdasarkan kesepakatan dan persetujuan bersama, para pihak dengan ini <b>setuju dan sepakat</b> untuk menandatangani dan mengikatkan diri dalam Perjanjian Kerja Digital dengan syarat-syarat dan ketentuan-ketentuan sebagai berikut :</p>
-                                    <br>
-									<h3>Pasal 1</h3>
-                                    <p>Jangka waktu Perjanjian  Kerja Digital ini adalah selama  12 ( Dua Belas ) bulan atau 1 ( satu ) Tahun. </p>
+                                    <h3>Pasal 1</h3>
+                                    <p>Jangka waktu Perjanjian Kerja Digital ini adalah selama  12 ( Dua Belas ) bulan atau 1 ( satu ) Tahun. </p>
                                     <h3>Pasal 2</h3>
                                     <p>Pekerja akan bekerja di PT. FEDERASI JAYA MANDIRI Di bagian:&nbsp;<b><span id="out-bagian"></span></b></p>
                                     <br> 
                                     <h3>Pasal 3</h3>
                                     <p>Tugas, wewenang dan tanggung jawab Karyawan akan diatur secara tersendiri oleh Kepala Departemen yang bersangkutan. Perincian tugas, wewenang dan tanggung jawab ( Job Description ) yang diberikan, akan merupakan bagian yang tidak terpisah dari kontrak kerja ini.</p>
                                     <h3>Pasal 4</h3>
-                                    <p>Jumlah jam dan hari kerja Karyawan adalah 8 ( delapan ) jam per hari dan 5 ( lima ) hari per minggu, atau jadwal yang akan diatur secara tersendiri oleh Kepala Departemen yang bersangkutan dan akan merupakan bagian yang tidak terpisahkan dari kontrak kerja ini. Apabila diperlukan dan diminta oleh pihak Perusahaan, Karyawan bersedia untuk melaksanakan kerja lembur dengan persyaratan yang sesuai dengan kesepakatan dan peraturan Pemerintah yang berlaku.</p>
+                                    <p>Jumlah jam dan hari kerja Karyawan adalah 8 ( delapan ) jam per hari dan 5 ( lima ) hari per minggu, atau jadwal yang akan di atur secara tersendiri oleh Kepala Departemen yang bersangkutan dan akan merupakan bagian yang tidak terpisahkan dari kontrak kerja ini. Apabila diperlukan dan diminta oleh pihak Perusahaan, Karyawan bersedia untuk melaksanakan kerja lembur dengan persyaratan yang sesuai dengan kesepakatan dan peraturan Pemerintah yang berlaku.</p>
                                     <h3><strong>Pasal 5</strong></h3>
-                                    <p>Selama bekerja pada masa Perjanjian Kerja Digital ini, Karyawan berhak atas upah yang pengaturannya disepakati sebagai berikut :</p>
+                                    <p>Selama bekerja pada masa Perjanjian Kerja ini, Karyawan berhak atas upah yang pengaturannya disepakati sebagai berikut :</p>
                                     <ol type="a">
                                     <li>Upah pokok sebesar <b><span id="out-gaji">Rp 0</b></span> / Bulan</li>
-	                                <li>Insentif Keagamaan yang dibayarkan kepada PIHAK KEDUA  sesuai dengan kebijakan bagi pekerja waktu tertentu yang berlaku.</li>
+	                                <li>Insentif Keagamaan diberikan kepada PIHAK KEDUA sesuai dengan kebijakan Perusahaan.</li>
+									<li>Uang saku tidak dibayarkan apabila PIHAK KEDUA  tidak masuk kerja ( No Work No Pay ).</li>
+									<li>Tunjangan Shift ( Shift 2 & 3 )</li>
 	                                <li>Perusahaan akan membayar upah pekerja setiap akhir bulan.</li>
                                     </ol>
                                     <h3>Pasal 6</h3>
@@ -510,29 +247,29 @@
 	                                <li>PIHAK KEDUA wajib melakukan tugas / pekerjaan dengan baik dan penuh tanggung jawab serta menurut pada perintah atasannya/pengusaha</li>
 	                                <li>Apabila pihak kedua mengundurkan diri atas kemauan sendiri, maka harus mengajukan permohonan minimal 1 (satu) bulan sebelumnya. Jika tidak memenuhi ketentuan ini maka semua hak nya akan ditunda sesuai keputusan PIHAK PERTAMA.</li>
                                     </ol>
-		      						<h3>Pasal 7</h3>
+                                    <h3>Pasal 7</h3>
                                     <p>Karyawan memahami dan menyetujui sepenuhnya bahwa Perusahaan dapat melakukan Pemutusan Hubungan Kerja sebelum masa Perjanjian Kerja ini berakhir apabila karyawan yang bersangkutan melakukan pelanggaran sesuai peraturan perusahaan, undang-undang ketenagakerjaan dan berurusan dengan pihak berwajib tanpa adanya kewajiban Perusahaan untuk membayar ganti rugi atau kompensasi dalam bentuk apapun, apabila : </p>
                                     <ol type="a">
                                     <li>Karyawan melanggar  peraturan Perusahaan setelah dilakukan pembinaan dan melakukan perbuatan-perbuatan yang menyebabkan kerugian bagi Perusahaan. </li>
                                     <li>Karyawan tersandung kasus pidana atau perdata.</li>
                                     <li>Karyawan mengundurkan diri atas kehendak sendiri dengan terlebih dahulu memberitahukan secara  tertulis 1 (satu) bulan sebelum tanggal pengunduran diri. </li>
-                                    <li>Karyawan tidak mampu memenuhi standar kerja yang telah ditetapkan oleh Perusahaan, atasannya langsung dan/ atau petugas perusahaan yang ditunjuk.</li>
+                                    <li>Karyawan tidak mampu memenuhi standard kerja yang telah ditetapkan oleh Perusahaan, atasannya langsung dan/ atau petugas perusahaan yang ditunjuk.</li>
                                     <li>Karyawan meninggal dunia. </li>
-                                    <li>Karyawan setuju bahwa Perjanjian kerja Digital ini berakhir demi hukum sesuai dengan jangka waktu yang ditentukan dan tidak ada tuntutan dikemudian hari.</li>
-                                    <li>Melakukan penipuan, pencurian atau penggelapan barang milik perusahaan/ milik sesama pekerja didalam lingkungan perusahaan termasuk membantu atau kerja sama.</li>
+                                    <li>Karyawan setuju bahwa perjanjian ini berakhir demi hukum sesuai dengan jangka waktu yang ditentukan dan tidak ada tuntutan dikemudian hari.</li>
+                                    <li>Melakukan penipuan, pencurian atau penggelapan barang milik perusahaan/ milik sesame pekerja didalam lingkungan perusahaan termasuk membantu atau kerja sama.</li>
                                     <li>Memberikan keterangan palsu atau yang dipalsukan sehingga merugikan perusahaan.</li>
-                                    <li>Mabuk, meminum minuman keras memabukkan, memakai, membawa dan mengedarkan narkotika, psikotropika dan zat adiktif lainnya dilingkungan perusahaan.</li>
+                                    <li>Mabuk, meminum minuman keras memabukkan, memakai, membawa dan mengedarkan narkotika, psykotropika dan zat adiktif lainnya dilingkungan perusahaan.</li>
                                     <li>Melakukan perbuatan asusila atau perjudian dilingkungan kerja.</li>
                                     <li>Menyerang, menganiaya/memukul, mengancam, menghina, mencemarkan nama baik perusahaan, pengusaha, keluarga pengusaha, atasan, bawahan, atau teman kerja.</li>
                                     <li>Membujuk, memaksa pengusaha, keluarga pengusaha,atasan, bawahan atau rekan kerja untuk melakukan perbuatan yang bertentangan dengan peraturan perundang-undangan.</li>
-                                    <li>Dengan sengaja merusak barang milik perusahaan, rekanan atau sesama pekerja.</li>
+                                    <li>Dengan sengaja merusak barang milik perusahaan, rekanan atau sesame pekerja.</li>
                                     <li>Dengan sengaja membiarkan teman sekerja/pengusaha dalam keadaan bahaya/terkena kecelakaan ditempat kerja.</li>
                                     <li>Membongkar atau membocorkan rahasia perusahaan atau mencemarkan nama baik pengusaha.</li>
                                     <li>Terbukti menerima suap / pemberian dalam bentuk apapun dari siapa saja untuk keuntungan diri sendiri, sehingga merugikan atau mengurangi keuntungan perusahaan.</li>
                                     <li>Membawa senjata tajam atau senjata api maupun benda-benda berbahaya kedalam lingkungan perusahaan.</li>
                                     <li>Memalsukan dokumen, tanda tangan, surat surat bukti,kwitansi kwitansi yang berhubungan dengan perusahaan yang mengakibatkan kerugian perusahaan.</li>
                                     <li>Membuat onar atau berkelahi ditempat kerja.</li>
-                                    <li>Membawa keluar barang barang milik perusahaan dalam bentuk apapun tanpa dilengkapi surat ijin keluar.</li>
+                                    <li>Membuwa keluar barang barang milik perusahaan dalam bentuk apapun tanpa dilengkapi surat ijin keluar.</li>
                                     </ol>
                                     <h3>Pasal 8 </h3>
                                     <p>Force Majeure adalah peristiwa – peristiwa yang berada diluar kemampuan yang dapat mempengaruhi kinerja dan pelaksanaan pekerjaan.</p>
@@ -542,30 +279,29 @@
                                     <li>Keadaan memaksa yang dinyatakan oleh pemerintah daerah atau pusat.</li>
                                     </ol>
                                     <br>
-                                    <p>Apabila terjadi Force Majeure maka pihak yang lebih dahulu mengetahui wajib memberitahukan kepada pihak lainnya selambat – lambatnya dalam 14 ( empat belas hari ) setelah terjadi Force Majeure. Perusahaan dan Karyawan dibebaskan dari tanggung jawab dan tidak ada tuntut menuntut dalam memenuhi kewajiban yang tercantum dalam perjanjian ini, yang disebabkan dan diakibatkan oleh kejadian diluar keluasaan masing – masing pihak yang digolongkan sebagai Force Majeure.</p>
+                                    <p>Apabila terjadi Force Majeure maka pihak yang lebih dahulu mengetahui wajib memberitahukan kepada pihak lainnya selambat – lambatnya dalam 14 ( empat belas hari ) setelah terjadi Force Majeure. Perusahaan dan Karyawan dibebaskan dari tanggung jawab dan tidak ada tuntut menuntut dalam memenuhi kewajiban yang tercantum dalam perjanjian ini, yang disebabkan dan diakibatkan oleh kejadian diluar keluasaan masing – masing pihak yang digolongkan sebagai Froce Majeure.</p>
                                     <h3>Pasal 9 </h3>
-                                    <p>Perjanjian Kerja Digital ini tidak memberikan hak apapun kepada Karyawan untuk menjadi pekerja tetap kecuali atas penilaian atau persetujuan dari Perusahaan. Karyawan dengan ini menyatakan persetujuannya bahwa tidak ada hak-hak lain milik Karyawan selain dari yang tersebut dalam Perjanjian Kerja Digital ini.</p>
+                                    <p>Perjanjian Kerja ini tidak memberikan hak apapun kepada Karyawan untuk menjadi pekerja tetap kecuali atas penilaian atau persetujuan dari Perusahaan. Karyawan dengan ini menyatakan persetujuannya bahwa tidak ada hak-hak lain milik Karyawan selain dari yang tersebut dalam Perjanjian Kerja ini.</p>
                                     <br>
-			                        <p>Demikian Perjanjian Kerja Digital ini dibuat, disepakati dan ditandatangani secara Digital oleh kedua belah pihak dengan penuh kesadaran tanpa adanya paksaan dari pihak manapun.</p>
-			                        <p>Masing – masing berhak untuk menyimpan Soft file perjanjian ini, baik oleh Perusahaan maupun karyawan yang memiliki kekuatan hukum yang sama.</p>
+			                        <p>Demikian Perjanjian Kerja Digital ini dibuat, disepakati dan ditandatangani secara Digital oleh kedua belah pihak dengan penuh kesadaran tanpa adanya paksaan dari pihak manapun. Dan Masing – masing berhak untuk menyimpan Soft file perjanjian ini, baik oleh Perusahaan maupun karyawan yang memiliki kekuatan hukum yang sama.</p>
 									
 			                        <div>
-									 <p style="margin:0 0 2px 0;">Cikarang, <span id="tanggalCikarang"></span></p>
+									 <p>Cikarang, <span id="tanggalCikarang"></span></p>
 									 </div>
 		                         	</div>
 			                        <div class="page" style="text-align:justify">
                                     <div>
 									<table class="sign-table">
-                                    <tr style="page-break-inside:avoid;break-inside:avoid;">
+                                    <tr>
                                     <td class="sign-td">
                                     <div class="sign-title">Pihak Pertama</div>
-										<img src="hrd.png" alt="Identitas Pihak Pertama" width="50" height="50">
-                                    <div class="sig-box1"><img id="img-hrd" class="sig-img" alt="TTD Pihak Pertama" /></div>
-                                    <div class="under-name">( LINA PRATIWI )</div>
+										<img src="natalia.png" alt="logs pt" width="50">
+                                    <div class="sig-box1"><img id="img-hrd" class="sig-img" /></div>
+                                    <div class="under-name">( LIna Pratiwi )</div>
                                     </td>
                                     <td class="sign-td">
                                     <div class="sign-title">Pihak Kedua</div>
-                                    <div class="sig-box"><img id="img-emp" class="sig-img" alt="TTD Pihak Kedua" /></div>
+                                    <div class="sig-box"><img id="img-emp" class="sig-img" /></div>
                                     <div class="under-name">( <span id="r-nama2"></span> )</div>
                                     </td>
                                     </tr>
@@ -587,55 +323,11 @@
 
   // —— Signature pads ——
   let hrdPad, empPad;
-  function resizeSignatureCanvas(canvas){
-    if(!canvas) return;
-
-    const ratio = Math.max(window.devicePixelRatio || 1, 1);
-    const rect = canvas.getBoundingClientRect();
-
-    const width = Math.max(Math.round(rect.width * ratio), 1);
-    const height = Math.max(Math.round(rect.height * ratio), 1);
-
-    if(canvas.width !== width || canvas.height !== height){
-      const oldData = canvas.toDataURL ? canvas.toDataURL('image/png') : null;
-
-      canvas.width = width;
-      canvas.height = height;
-
-      const ctx = canvas.getContext('2d');
-      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-      if(oldData){
-        const img = new Image();
-        img.onload = () => ctx.drawImage(img, 0, 0, rect.width, rect.height);
-        img.src = oldData;
-      }
-    }
-  }
-
   function initPads(){
     const hrdCanvas = document.getElementById('sig-hrd');
+    hrdPad = new SignaturePad(hrdCanvas);
     const empCanvas = document.getElementById('sig-emp');
-
-    resizeSignatureCanvas(hrdCanvas);
-    resizeSignatureCanvas(empCanvas);
-
-    hrdPad = new SignaturePad(hrdCanvas, {
-      minWidth: 0.7,
-      maxWidth: 2.0,
-      penColor: '#000'
-    });
-
-    empPad = new SignaturePad(empCanvas, {
-      minWidth: 0.7,
-      maxWidth: 2.0,
-      penColor: '#000'
-    });
-
-    window.addEventListener('resize', () => {
-      resizeSignatureCanvas(hrdCanvas);
-      resizeSignatureCanvas(empCanvas);
-    });
+    empPad = new SignaturePad(empCanvas);
   }
   function clearSig(pad){ pad && pad.clear(); }
 
@@ -684,15 +376,6 @@
       ttd_hrd: hrdPad && !hrdPad.isEmpty() ? hrdPad.toDataURL('image/png') : ''
     };
     return d;
-  }
-
-  function escapeHTML(value){
-    return String(value ?? '')
-      .replace(/&/g,'&amp;')
-      .replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;')
-      .replace(/'/g,'&#039;');
   }
 
   function fillContract(d){
@@ -843,82 +526,11 @@ function generateNomorKontrak(){
   }
 
   // Download PDF
-  async function downloadPDF(){
+  function downloadPDF(){
     const element = document.getElementById('content');
-
-    if(!element){
-      alert('Konten kontrak tidak ditemukan.');
-      return;
-    }
-
-    const safeName = (document.getElementById('r-nama').textContent || '')
-      .replace(/\s+/g,'_')
-      .replace(/[^a-zA-Z0-9_\-]/g,'');
-
-    /*
-      A4 = 210 x 297 mm.
-      Margin 10 mm kiri/kanan -> area cetak 190 mm.
-      Jangan memakai margin 0.5 inch + width 980px sekaligus karena
-      kombinasi tersebut dapat membuat sisi kanan/isi kontrak terpotong.
-    */
-    const opt = {
-      margin: [0.35, 0.35, 0.35, 0.35],
-      filename: `Kontrak_Kerja_${safeName || 'karyawan'}.pdf`,
-      image: {
-        type: 'jpeg',
-        quality: 0.98
-      },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        allowTaint: false,
-        backgroundColor: '#ffffff',
-        scrollX: 0,
-        scrollY: 0,
-        windowWidth: 794,
-        logging: false
-      },
-      jsPDF: {
-        unit: 'in',
-        format: 'a4',
-        orientation: 'portrait',
-        compress: true
-      },
-      pagebreak: {
-        mode: ['css', 'legacy'],
-        avoid: [
-          '.sign-table',
-          '.sign-table tr',
-          '.sign-td',
-          '.sig-box',
-          '.sig-box1'
-        ]
-      }
-    };
-
-    /*
-      Tunggu font dan gambar selesai dimuat agar posisi teks/TTD
-      tidak berubah saat html2canvas mengambil screenshot.
-    */
-    if(document.fonts && document.fonts.ready){
-      await document.fonts.ready;
-    }
-
-    const images = Array.from(element.querySelectorAll('img'));
-    await Promise.all(images.map(img => {
-      if(img.complete) return Promise.resolve();
-      return new Promise(resolve => {
-        img.addEventListener('load', resolve, {once:true});
-        img.addEventListener('error', resolve, {once:true});
-      });
-    }));
-
-    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-
-    await html2pdf()
-      .set(opt)
-      .from(element)
-      .save();
+    const safeName = (document.getElementById('r-nama').textContent||'').replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_\-]/g,'');
+    const opt = { margin: 0.5, filename: `Kontrak_Kerja_${safeName || 'karyawan'}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2, useCORS: true, scrollY: 0 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }, pagebreak: { mode: ['css','legacy'] } };
+    html2pdf().set(opt).from(element).save();
   }
 
   // —— Init ——
@@ -953,17 +565,3 @@ function generateNomorKontrak(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Teks_yang_ditempel_1_6_FIXED_V3.html
-HTML
